@@ -1,0 +1,254 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[letterpaper,margin=0.5in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{mdwlist}
+\usepackage[default]{lato}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{ragged2e}
+\usepackage{fontawesome}
+\usepackage{enumitem}
+\DeclareFontFamily{U}{fontawesomeOne}{}
+\DeclareFontShape{U}{fontawesomeOne}{m}{n}
+{<-> FontAwesome--fontawesomeone}{}
+\DeclareRobustCommand\FAone{\fontencoding{U}\fontfamily{fontawesomeOne}\selectfont}
+\pagestyle{empty}
+\setlength{\tabcolsep}{0em}
+
+% indentsection style, used for sections that aren't already in lists
+% that need indentation to the level of all text in the document
+\newenvironment{indentsection}[1]%
+{\begin{list}{}%
+{\setlength{\leftmargin}{#1}}%
+     \item[]
+}
+{\end{list}}
+
+% opposite of above; bump a section back toward the left margin
+\newenvironment{unindentsection}[1]%
+{\begin{list}{}%
+{\setlength{\leftmargin}{-0.5#1}}%
+\item[]%
+}
+{\end{list}}
+
+% format two pieces of text, one left aligned and one right aligned
+\newcommand{\headerrow}[2]
+{\begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
+#1 &
+#2 \\
+\end{tabular*}}
+
+% make "C++" look pretty when used in text by touching up the plus signs
+\newcommand{\CPP}
+{C\nolinebreak[4]\hspace{-.05em}\raisebox{.22ex}{\footnotesize\bf ++}}
+
+% and the actual content starts here
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Nguyen Phu Quang}}\\
+    \vspace{0.2cm}
+    Software Engineer\\
+    \vspace{0.2cm}
+    Ho Chi Minh, Vietnam
+    \vspace{0.5cm}
+    \\
+    \raisebox{-0.2\height} {\Large \faPhoneSquare} \ \  +84 913501314 \hfill quangnguyen16200@gmail.com \ \ \raisebox{-0.2\height}{\Large \faEnvelopeSquare}
+    \\
+    \raisebox{-0.2\height}{\Large \faGithubSquare} \ \ github.com/McPepperoni \hfill linkedin.com/in/quang-nguyen-549926212 \raisebox{-0.2\height}{\Large \faLinkedinSquare}
+\end{center}
+
+\hrule
+\vspace{.5cm}
+\justifying
+I'm a software engineer who are eager to learn and understand technology. Begin as Computer Sciences student ignites my passion to work with creating software to better life. I have deep understand on multiple technology
+from Front-end to Back-end to Mobile.
+\vspace{.5cm}
+
+\hrule
+\vspace{-1em}
+\subsection*{\Large Experience}
+
+\renewcommand\labelitemi{}
+\renewcommand\labelitemii{$\bullet$}
+\begin{itemize}[leftmargin=1em]
+    \parskip=0.1em
+
+
+    \item
+          \headerrow
+          {\large\textbf{Renesas Design Vietnam}}
+          {\textbf{Tan Thuan, District 7, Ho Chi Minh}}
+          \headerrow
+          {\emph{Software Engineer}}
+          {\emph{July 2023 -- Present}}
+          {\emph{Java/Springboot - ReactJS/NextJS/TS - Python/SQL - OracleDB/PostgreSQL}}\\
+
+          \textbf{Extracting} and \textbf{wrangling} data from AgilePLM.
+          \textbf`'{Building microservices based application} PLM supporting applications.
+          \begin{enumerate}
+              \item
+                    \headerrow
+                    {\textbf{PLM APART - License administrative monitoring portal}}
+                    {\emph{}}
+                    {\emph{Java springboot - NextJS - AgilePLM}}
+
+                    \begin{itemize*}
+                        \item Building \textbf{Apis} and \textbf{User interface} for \textbf{Readonly metrics} of license usages.
+                        \item Tracking license/user changes.
+                        \item Building chart components for statistics.
+                    \end{itemize*}
+              \item
+                    \headerrow
+                    {\textbf{PLM AUDIT - User auditing system}}
+                    {\emph{}}
+                    {\emph{Java springboot - NextJS - Kafka - AgilePLM - Postgres - Docker - Camunda}}
+
+                    \begin{itemize*}
+                        \item Building \textbf{Apis} and \textbf{User interface} for \textbf{Scheduled RBAC} based application for administrative board to monitor and audit \textbf{System licenses} and \textbf{Account usages}.
+                        \item Integrating with \textbf{Kafka} and \textbf{Camunda} for managing running business processes.
+                        \item Implementing RBAC on NextJS application based on required design. Optimized user experience with \textbf{SSR.}
+                        \item \textbf{Response to feedback, monitoring, testing} and supporting end users.
+                    \end{itemize*}
+              \item
+                    \headerrow
+                    {\textbf{FIESTA - Data migration}}
+                    {\emph{}}
+                    {\emph{Java springboot - Kafka - AgilePLM - OracleDB - Docker}}
+
+                    \begin{itemize*}
+                        \item Implementing and building \textbf{APIs, Data Wranglers,\dots} migrating data from PLM System to to others.
+                        \item Brain storming and reacting to requirements change and implementing \textbf{scalable system} with \textbf{Kafka} and \item{Master/Worker} to handle giant loads of data and ensuring service uptime.
+                        \item Support development by \textbf{deploying relevant tools} to development environment using \textbf{Docker}.
+                    \end{itemize*}
+              \item
+                    \headerrow
+                    {\textbf{ARET - Report portal}}
+                    {\emph{}}
+                    {\emph{Java springboot - NextJS - AgilePLM}}
+
+                    \begin{itemize*}
+                        \item Implementing and building \textbf{APIs, Data Wranglers, User Interfaces,\dots} for relevant employees to access reports of certain manufacturing processes.
+                        \item Referencing old implementation to renovate and implement on Microservices structures.\\
+                    \end{itemize*}
+          \end{enumerate}
+
+    \item
+          \headerrow
+          {\large\textbf{Freelance Software Engineer}}
+          {\textbf{}}
+          \headerrow
+          {\emph{NextJS - Java - NodeJS - Python - Docker - PostgreSQL/Firebase/SQL}}
+          {\emph{November 2022 - Present}}
+          \begin{enumerate}
+              \item
+                    \headerrow
+                    {\textbf{CodeZX - Longchass}}
+                    {\emph{}}
+                    {\emph{Java springboot - NextJS - Postgres - Google Cloud - AWS - CI/CD - Vercel - Jenkins - Docker - Kafka - Kong Api Gateway}}
+
+                    \begin{itemize*}
+                        \item Building \textbf{all in one} \textbf{Landing Page} and \textbf{CMS/CRM} application for client outreach and deal managements.
+                        \item \textbf{Optimizing SEO} and \textbf{SSR} for performances and accessibility.
+                        \item Integrate with Google for \textbf{Authentication/Email managements/Business metrics} including client/leads managements.
+                        \item Setup AWS environment for deployment with Docker.
+                        \item Building CICD pipeline for deployment with Jenkins.
+                    \end{itemize*}
+              \item
+                    \headerrow
+                    {\textbf{CodeZX - Coffeeshop}}
+                    {\emph{}}
+                    {\emph{Java springboot - NextJS - Flutter - Postgres - Kafka - Google Cloud - CI/CD - Vercel - Jenkins - Docker - Kafka - Kong Api Gateway}}
+
+                    \begin{itemize*}
+                        \item Building \textbf{Apis} and \textbf{User interface} for \textbf{contactless ordering} on or off-store including promotion campaigns and advertisements.
+                        \item Integrating online payment methods like \textbf{Momo/VietQr}.
+                        \item \textbf{Tracking order} and building \textbf{notification system} with \textbf{Kafka}.
+                        \item Building mobile version of application using Flutter for accessibility.
+                        \item Building email notification system.
+                        \item Setup \textbf{Jenkins for CICD} and \textbf{Kong for Routing};
+                        \item Working with \textbf{DNS} for \textbf{Mapping domains} and \textbf{config SSL}.
+                    \end{itemize*}
+              \item
+                    \headerrow
+                    {\textbf{Supplement ecommerce portal}}
+                    {\emph{}}
+                    {\emph{NodeJS - NextJS - Postgres - Firebase - Google Cloud - CI/CD - Vercel - Jenkins - Docker}}
+
+                    \begin{itemize*}
+                        \item Building \textbf{Apis} and \textbf{User interface} for \textbf{Healthcare Supplements}.
+                        \item Integrating online payment methods like \textbf{Momo/VietQr}.
+                        \item \textbf{Tracking order} and building \textbf{notification system} with \textbf{Firebase}.
+                        \item Working with \textbf{DNS} for \textbf{Mapping domains} and \textbf{config SSL}.\\
+                    \end{itemize*}
+          \end{enumerate}
+
+    \item
+          \headerrow
+          {\large\textbf{Success Software Services}}
+          {\textbf{Ward 12, Tan Binh District, Ho Chi Minh}}
+          \headerrow
+          {\emph{Fresher Backend Software Engineer}}
+          {\emph{January 2023 - July 2023}}
+          {\emph{C\#/.Net}}
+          \begin{itemize*}
+              \item Implementing designs and requirements for large scale ecommerce application.
+              \item Maintaining, renovating legacy softwares.
+              \item Participate in meeting comunicating with end users to advice solutions best fit requirements.
+              \item Aids in DevOPs process by building and optimizing \textbf{Docker} files
+          \end{itemize*}
+          \headerrow
+          {\emph{Intern Backend Software Engineer}}
+          {\emph{November 2022 - January 2023}}
+          \begin{itemize*}
+              \item Participate in training sessions on \textbf{C\#, .Net}.
+              \item Building from scratch ecommerce projects.
+          \end{itemize*}
+
+    \item
+          \headerrow
+          {\large\textbf{Vitalify Asia}}
+          {\textbf{Vo Thi Sau Ward, District 3, Ho Chi Minh}}
+          \headerrow
+          {\emph{Fresher Frontend Software Engineer}}
+          {\emph{August 2022 - November 2022}}
+          {\emph{ReactJS/TS}}
+          \begin{itemize*}
+              \item Developed internals ERP tools.
+              \item Working with designers and customers to improve user interfaces.\\
+          \end{itemize*}
+
+\end{itemize}
+
+\hrule
+\vspace{-1em}
+\subsection*{\Large Skills}
+
+\hyphenpenalty=1000
+\begin{itemize}[leftmargin=1em,noitemsep]
+    \item \textbf{Technologies:}
+          Java, C\#, HTML/CSS, Typescripts, \LaTeX, Python, SQL, Docker
+    \item \textbf{Software:}
+          Atlassian (Bitbucket, Jira, Confluence), Oracle System (Red Hat Linux, Agile PLM Systems, OracleDB)
+\end{itemize}
+
+\hrule
+\vspace{-1em}
+\subsection*{\Large Education}
+
+\begin{itemize}[leftmargin=1em]
+    \parskip=0.1em
+
+    \item
+          \headerrow
+          {\textbf{University of Information and Technologies}}
+          {\textbf{HCM VNU, Ho Chi Minh}}
+          \headerrow
+          {\emph{B.S. Computer Science} (\textbf{GPA:} 7.54/10)}
+          {\emph{September 2019 -- May 2024}}
+
+
+\end{itemize}
+
+\end{document}
