@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1732394093.3341 "e:/Works/CV/RESUME-NGUYEN-PHU-QUANG-SOFTWARE-ENGINEER.tex" "RESUME-NGUYEN-PHU-QUANG-SOFTWARE-ENGINEER.pdf" "RESUME-NGUYEN-PHU-QUANG-SOFTWARE-ENGINEER" 1732394094.16954 0
+["pdflatex"] 1733240670.6868 "e:/Works/CV/RESUME-NGUYEN-PHU-QUANG-SOFTWARE-ENGINEER.tex" "RESUME-NGUYEN-PHU-QUANG-SOFTWARE-ENGINEER.pdf" "RESUME-NGUYEN-PHU-QUANG-SOFTWARE-ENGINEER" 1733240671.57646 0
   "C:/Users/Quang/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1732393699 155501 69c64e18682da23b3f73def6a45c9d78 ""
   "C:/Users/Quang/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1732390241 24225047 29bba51aced2eee0e9eec03294a3b9ed ""
   "C:/Users/Quang/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/fontawesome/fontawesomeone.enc" 1463869852 1687 f004baecce60175c6453d0e3f808cf20 ""
@@ -25,7 +25,6 @@
   "C:/Users/Quang/AppData/Local/Programs/MiKTeX/fonts/tfm/typoland/lato/Lato-Regular-T1-TLF.tfm" 1561405517 87408 f973e06002751c62a44cc0a6b9479d71 ""
   "C:/Users/Quang/AppData/Local/Programs/MiKTeX/fonts/tfm/typoland/lato/Lato-Regular-TS1-TLF--base.tfm" 1561405572 1440 c2a1909f5fff07901f3f85f94e51fa7b ""
   "C:/Users/Quang/AppData/Local/Programs/MiKTeX/fonts/tfm/typoland/lato/Lato-Regular-TS1-TLF.tfm" 1561405572 1476 3f46d2630fb11eff3c76c1f1b314c33a ""
-  "C:/Users/Quang/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1247596667 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "C:/Users/Quang/AppData/Local/Programs/MiKTeX/fonts/type1/public/fontawesome/FontAwesome.pfb" 1463869852 173219 890b1c7806f4fd8da5584bf52ad6c3d7 ""
   "C:/Users/Quang/AppData/Local/Programs/MiKTeX/fonts/type1/typoland/lato/Lato-Bold.pfb" 1561405441 440414 ec6de3b6221a394c74d6d39cdc088a6d ""
   "C:/Users/Quang/AppData/Local/Programs/MiKTeX/fonts/type1/typoland/lato/Lato-Italic.pfb" 1561405438 472156 b6b99a2d66beabd6363e56c51aacfbf1 ""
@@ -61,9 +60,9 @@
   "C:/Users/Quang/AppData/Local/Programs/MiKTeX/tex/latex/mdwtools/mdwlist.sty" 1214495388 4305 82ec0f794abd28d83542f6accf5da295 ""
   "C:/Users/Quang/AppData/Local/Programs/MiKTeX/tex/latex/ragged2e/ragged2e.sty" 1687525147 10085 3dececaeed388e31285c366e124c0c4e ""
   "C:/Users/Quang/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
-  "RESUME-NGUYEN-PHU-QUANG-SOFTWARE-ENGINEER.aux" 1732394093 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "RESUME-NGUYEN-PHU-QUANG-SOFTWARE-ENGINEER.tex" 1732394092 5424 c44cab30bce8297ffab2e6a6aa0f1a77 ""
-  "e:/Works/CV/RESUME-NGUYEN-PHU-QUANG-SOFTWARE-ENGINEER.tex" 1732394092 5424 c44cab30bce8297ffab2e6a6aa0f1a77 ""
+  "RESUME-NGUYEN-PHU-QUANG-SOFTWARE-ENGINEER.aux" 1733240671 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "RESUME-NGUYEN-PHU-QUANG-SOFTWARE-ENGINEER.tex" 1733240669 5164 f5c29caefb9fac7f8613884ba7ed25d1 ""
+  "e:/Works/CV/RESUME-NGUYEN-PHU-QUANG-SOFTWARE-ENGINEER.tex" 1733240669 5164 f5c29caefb9fac7f8613884ba7ed25d1 ""
   (generated)
   "RESUME-NGUYEN-PHU-QUANG-SOFTWARE-ENGINEER.aux"
   "RESUME-NGUYEN-PHU-QUANG-SOFTWARE-ENGINEER.log"
