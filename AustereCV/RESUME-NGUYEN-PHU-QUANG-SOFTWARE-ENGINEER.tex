@@ -1,0 +1,234 @@
+%------------------------------------------------------------------------------
+%------------------------------------------------------------------------------
+%------------------------------------------------------------------------------
+% Resume in Latex (AustereCV)
+% Author : Shubham Mazumder
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+% Adopted for Nguyen Phu Quang - Software Engineer
+%------------------------------------------------------------------------------
+%------------------------------------------------------------------------------
+%------------------------------------------------------------------------------
+
+\documentclass[letterpaper,10pt]{article}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{amsmath}
+\usepackage{soul}
+% \input{glyphtounicode} % Commented for local compile; \pdfgentounicode=1 below suffices for ATS
+\usepackage[margin=0.5in]{geometry}
+
+%----------FONT OPTIONS----------
+% Sans-serif Fonts
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault,light]{inter}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage{roboto}
+% \usepackage[sfdefault,medium]{InriaSans}
+% \usepackage[default]{sourcesanspro} % Use default font if package missing
+
+% Serif Fonts
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+% -------------------------------------
+%----------PAGE SETUP------------------
+% -------------------------------------
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% URL style
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+ \vspace{-5pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+% ----------- Definitions -----------------------
+\def\spaceforrole{ }
+\definecolor{lightyellow}{cmyk}{0.00, 0.05, 0.20, 0.00} % Highlights
+\sethlcolor{lightyellow} % Highlights
+
+%--------------- Custom commands -----------------------
+
+\newcommand{\sectionspace}{
+\vspace{-20pt}
+}
+
+\newcommand{\subheadingtitlevspace}{
+\vspace{-3pt}
+}
+
+
+% Resume Item
+\newcommand{\resumeItem}[1]{
+ \item{
+ {#1 \vspace{-4pt}}
+ }
+}
+
+% Titles (two-argument form for Skills)
+\newcommand{\titleItem}[2]{
+ \textbf{#1}#2
+}
+
+% Highlighting
+\newcommand{\highlight}[1]{
+ \textsl{\textbf{#1}}
+}
+
+% Resume Subheading
+\newcommand{\resumeSubheading}[4]{
+ \item
+ \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}l@{}l}
+ {#1} & \titleItem{#3}{} $|$ {#2} & \textit{#4}\\
+ \end{tabular*}\vspace{-10pt}
+}
+
+% Resume Sub-sub heading
+\newcommand{\resumeSubSubheading}[2]{
+ \item
+ \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+ \textit{#1} & \textit{#2} \\
+ \end{tabular*}\vspace{-2pt}
+}
+
+% Resume Project Heading
+\newcommand{\resumeProjectHeading}[2]{
+ \item
+ \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+ #1 & \textit{ #2} \\
+ \end{tabular*}\vspace{-9pt}
+}
+
+%Resume Subheading List
+\newcommand{\resumeSubHeadingListStart}{\subheadingtitlevspace\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+
+%Resume Item List
+\newcommand{\resumeItemListStart}{
+\begin{itemize}}
+\newcommand{\resumeItemListEnd}{
+\end{itemize}\vspace{-8pt}}
+
+%-------------------------------------------------------
+%%%%%% RESUME STARTS HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------------------------------------------------------
+
+\begin{document}
+
+% -------------------------------------
+%----------HEADING---------------------
+% -------------------------------------
+
+\begin{flushleft}
+    \textbf{\large Nguyen Phu Quang} \\
+    \textit{Ho Chi Minh, Vietnam} $|$
+    \textit{+84 913501314} $|$
+    \href{mailto:quangnguyen16200@gmail.com}{{\textit{quangnguyen16200@gmail.com}}} $|$
+    \href{https://github.com/McPepperoni}{{\textit{github.com/McPepperoni}}} $|$
+    \href{https://linkedin.com/in/quang-phu-nguyen}{{\textit{linkedin.com/in/quang-phu-nguyen}}}
+    \vspace{-8pt}
+\end{flushleft}
+
+% -------------------------------------
+%---------- PROFESSIONAL SUMMARY ------
+% -------------------------------------
+
+\section{Professional Summary}
+\vspace{-3pt}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    {\item{
+          {Software Engineer with experience building \textbf{serverless} and \textbf{microservice} systems in \textbf{Java}, \textbf{Spring Boot}, and \textbf{AWS}. Focus on \textbf{event-driven} backends, \textbf{API design}, and \textbf{data migration}; comfortable across full stack with \textbf{Next.js} and \textbf{TypeScript}.}
+          }}
+\end{itemize}
+\sectionspace
+
+% -------------------------------------
+%----------TECHNICAL SKILLS------------
+% -------------------------------------
+
+\section{Technical Skills}
+\subheadingtitlevspace
+\begin{itemize}[leftmargin=0.15in, label={}]
+    {\item{
+          \titleItem{Languages}{: Java, SQL, Python, TypeScript} \\
+          \titleItem{Backend \& APIs}{: Spring Boot, REST APIs, Apache Kafka, Camunda BPMN; AWS (Lambda, S3, SQS, Step Functions); Terraform} \\
+          \titleItem{Data \& Infra}{: PostgreSQL, MySQL, Oracle DB; Docker; ELK, NGINX, Kong Gateway} \\
+          \titleItem{Frontend}{: Next.js} \\
+          \titleItem{Certificates}{: TOEIC 930/990}
+          }}
+\end{itemize}
+\sectionspace
+
+% -------------------------------------
+%----------EXPERIENCE------------------
+% -------------------------------------
+
+\section{Experience}
+\resumeSubHeadingListStart
+\resumeProjectHeading
+{\titleItem{Software Engineer} $|$ \emph{TymeX}}{Feb 2025 -- Present}
+\resumeItemListStart
+\resumeItem{Designed and built \textbf{loan fulfillment} for TymeX's \textbf{next-gen personal loan} platform; enabled \textbf{partner onboarding} and expansion into \textbf{2+ countries} via \textbf{AWS serverless} architecture (\textbf{Lambda}, \textbf{S3}, \textbf{SQS}, \textbf{Step Functions}) with \textbf{event-driven} and \textbf{API-based} communication for distributed loan processing.}
+\resumeItem{Developed \textbf{servicing flows} with \textbf{3 third-party integrations} for \textbf{collection}, \textbf{fee}, and \textbf{mandate management}; built \textbf{Java Spring Boot} as the \textbf{core services} that orchestrate business logic and third-party integrations.}
+\resumeItem{Implemented separate \textbf{reporting} ingestion that processes \textbf{1M+} records monthly from third-party sources to support reconciliation and analytics. Supported migration of \textbf{300k accounts} and \textbf{mandates} from a \textbf{third-party loan book} into the internal system, achieving \textbf{99.9\%} data integrity and enabling unified servicing and partner consolidation.}
+\resumeItem{Collaborated with product and operations on requirements and runbooks; wrote tests and documentation to ensure reliable deployments and easier onboarding for new engineers.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\titleItem{Software Engineer} $|$ \emph{Renesas Electronics}}{Jul 2023 -- Feb 2025}
+\resumeItemListStart
+\resumeItem{Developed \textbf{RBAC-based API services} for license monitoring and audit; integrated with \textbf{Apache Kafka} and \textbf{Camunda BPMN} for \textbf{event-driven} process orchestration and workflow automation.}
+\resumeItem{Improved system performance through \textbf{server-side rendering (SSR)} and built \textbf{data migration tools} that increased data accuracy by \highlight{20\%}; reduced manual effort and supported compliance reporting.}
+\resumeItem{Architected and maintained a \textbf{scalable microservice} system handling \textbf{2TB} of data with \textbf{99\%} uptime; containerized and optimized workflows with \textbf{Docker}.}
+\resumeItem{Participated in code reviews and sprint planning; contributed to technical design docs and helped standardize API contracts and error-handling patterns across services.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\titleItem{Software Engineer} $|$ \emph{Success Software Services}}{Feb 2022 -- Aug 2022}
+\resumeItemListStart
+\resumeItem{Developed \textbf{internal ERP tools} and \textbf{e-commerce platforms} with \textbf{Next.js} and \textbf{Spring Boot} in an \textbf{Agile Scrum} environment; owned end-to-end delivery of features from design to deployment.}
+\resumeItem{Delivered \textbf{full-stack} solutions: \textbf{REST APIs}, database schema design, and frontend components to support business workflows and customer-facing flows; coordinated with designers and stakeholders to align UI with requirements.}
+\resumeItem{Improved \textbf{stability}, \textbf{scalability}, and \textbf{user experience} by refactoring legacy systems and shipping new functionality on schedule.}
+\resumeItem{Wrote unit and integration tests for critical paths; assisted in debugging production issues and documenting runbooks for support and future maintenance.}
+\resumeItemListEnd
+\resumeSubHeadingListEnd
+
+% -------------------------------------
+%----------EDUCATION-------------------
+% -------------------------------------
+
+\section{Education}
+\resumeSubHeadingListStart
+\resumeSubheading
+{University of Information and Technology, HCMVNU}{Ho Chi Minh}
+{B.S. Computer Science}{}
+\resumeSubHeadingListEnd
+\vspace{-8pt}
+
+%-------------------------------------------
+\end{document}
