@@ -1,0 +1,8 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+:root {
+	--diagonal-length: 200vmax;
+	--half-diagonal-length: 100vmax;
+}
