@@ -16,7 +16,11 @@
 	let height = $state(0);
 
 	setTimeContext({ getTime: () => time, setTime: (_time) => (time = _time) });
-	setCanvasContext({ getCanvas: () => canvas, setCanvas: (_canvas) => (canvas = _canvas) });
+	setCanvasContext({
+		getCanvas: () => canvas,
+		setCanvas: (_canvas) => (canvas = _canvas),
+		resolution: 64
+	});
 </script>
 
 <svelte:window bind:innerWidth={width} bind:innerHeight={height} />

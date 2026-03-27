@@ -1,6 +1,13 @@
 <script lang="ts">
-</script>
+	import { MAP_ARRAY } from '$lib/constants/map/terrain';
+	import { drawBlock } from '$lib/utils/draw';
+	import { onMount } from 'svelte';
 
-<div
-	class="relative top-full left-0 h-px w-px -translate-x-1/2 -translate-y-1/2 transform bg-red-500"
-></div>
+	onMount(() => {
+		MAP_ARRAY.forEach((row, y) => {
+			row.forEach((block, x) => {
+				drawBlock(block, x, y);
+			});
+		});
+	});
+</script>

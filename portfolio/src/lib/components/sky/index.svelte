@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { getCanvasContext } from '$lib/contexts/canvas-context';
 	import { getTimeContext } from '$lib/contexts/time-context';
 	import { getCircleRadius } from '$lib/utils/circle';
+	import { draw } from '$lib/utils/draw';
 
 	const { getTime } = getTimeContext();
 
@@ -20,15 +20,14 @@
 	});
 
 	$effect(() => {
-		const canvas = getCanvasContext().getCanvas();
-		if (!canvas) {
-			return;
-		}
-		const ctx = canvas.getContext('2d');
-		if (!ctx) {
-			return;
-		}
-		ctx.fillStyle = 'red';
-		ctx.fillRect(0, 0, width, height);
+		draw(
+			(ctx, x, y) => {
+				console.log(x, y);
+				ctx.fillStyle = 'red';
+				ctx.fillRect(x, y, 200, -200);
+			},
+			10,
+			10
+		);
 	});
 </script>

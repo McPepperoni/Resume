@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { Sky } from '$lib';
+	import { Terrain } from '$lib';
 </script>
 
-<Sky />
+<!-- <Sky /> -->
+<Terrain />

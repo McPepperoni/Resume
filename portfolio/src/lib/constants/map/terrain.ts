@@ -1,6 +1,17 @@
-export const TERRAIN = {
-    DIRT: 'ground',
-    SAND: 'sand',
+export type TERRAIN_PROPERTY = {
+    name: string;
+    color: string;
+};
+
+export const TERRAIN: Record<string, TERRAIN_PROPERTY> = {
+    DIRT: {
+        name: 'ground',
+        color: 'brown',
+    },
+    SAND: {
+        name: 'sand',
+        color: 'yellow',
+    },
 } as const;
 
 
