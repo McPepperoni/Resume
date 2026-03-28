@@ -1,6 +1,9 @@
 <script lang="ts">
-	import { Terrain } from '$lib';
+	import { Control, GameLoop, Player, Terrain } from '$lib';
 </script>
 
 <!-- <Sky /> -->
 <Terrain />
+<Control />
+<GameLoop />
+<Player />

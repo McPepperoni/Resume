@@ -22,6 +22,6 @@ export const drawBlock = (type: (typeof TERRAIN)[keyof typeof TERRAIN], x: numbe
     const { resolution } = getCanvasContext();
     draw((ctx, x, y) => {
         ctx.fillStyle = type.color;
-        ctx.fillRect(x * resolution, y * resolution, resolution, -resolution);
-    }, x, y);
+        ctx.fillRect(x, y, resolution, -resolution);
+    }, x * resolution, y * resolution);
 }
