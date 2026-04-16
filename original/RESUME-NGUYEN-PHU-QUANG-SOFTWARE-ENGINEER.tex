@@ -1,5 +1,5 @@
-\documentclass[11pt,letterpaper]{article}
-\usepackage[letterpaper,margin=0.5in]{geometry}
+\documentclass[10pt,letterpaper]{article}
+\usepackage[letterpaper,margin=0.45in]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{mdwlist}
 \usepackage[default]{lato}
@@ -8,6 +8,9 @@
 \usepackage{ragged2e}
 \usepackage{fontawesome}
 \usepackage{enumitem}
+\usepackage{titlesec}
+\setlist[itemize]{nosep,leftmargin=1em,topsep=0pt,partopsep=0pt}
+\titlespacing*{\subsection}{0pt}{0.42em}{0.28em}
 \DeclareFontFamily{U}{fontawesomeOne}{}
 \DeclareFontShape{U}{fontawesomeOne}{m}{n}
 {<-> FontAwesome--fontawesomeone}{}
@@ -38,77 +41,94 @@
 \newcommand{\CPP}
 {C\nolinebreak[4]\hspace{-.05em}\raisebox{.22ex}{\footnotesize\bf ++}}
 
+% Section dividers: minimal positive glue so rules clear text (negative vspace overlapped lines into copy)
+\newcommand{\resumesectionrule}{%
+  \par\vspace{0.18em}%
+  \noindent\rule{\linewidth}{0.4pt}\par
+  \vspace{0.24em}%
+}
+
 \begin{document}
 
 \begin{center}
-    {\LARGE \textbf{Nguyen Phu Quang}}\\
-    \vspace{0.2cm}
-    Software Engineer\\
-    \vspace{0.2cm}
-    Ho Chi Minh, Vietnam
-    \vspace{0.5cm}
-    \\
-    \raisebox{-0.2\height} {\Large \faPhoneSquare} \ \  +84 913501314 \hfill quangnguyen16200@gmail.com \ \ \raisebox{-0.2\height}{\Large \faEnvelopeSquare}
-    \\
-    \raisebox{-0.2\height}{\Large \faGithubSquare} \ \ github.com/McPepperoni \hfill linkedin.com/in/quang-phu-nguyen \ \ \raisebox{-0.2\height}{\Large \faLinkedinSquare}
+      {\LARGE \textbf{Nguyen Phu Quang}}\\
+      \vspace{0.2cm}
+      Full Stack Software Engineer\\
+      \vspace{0.1cm}
+      {\small Ho Chi Minh, Vietnam \textbullet\ Open to remote}
+      \vspace{0.5cm}
+      \\
+      \raisebox{-0.2\height} {\Large \faPhoneSquare} \ \  +84 913501314 \hfill quangnguyen16200@gmail.com \ \ \raisebox{-0.2\height}{\Large \faEnvelopeSquare}
+      \\
+      \raisebox{-0.2\height}{\Large \faGithubSquare} \ \ github.com/McPepperoni \hfill linkedin.com/in/quang-phu-nguyen \ \ \raisebox{-0.2\height}{\Large \faLinkedinSquare}
 \end{center}
-\hrule
-\vspace{-1em}
-\subsection*{\Large Education}
-\headerrow
-{\textbf{University of Information and Technology}}
-{\textbf{HCMVNU, Ho Chi Minh}}
-\headerrow
-{\emph{B.S. Computer Science}}\\
-\hrule
-\vspace{-1em}
-\subsection*{\Large Skills}
-\hyphenpenalty=1000
-\begin{itemize}[leftmargin=1em,noitemsep]
-    \item \textbf{Languages:}
-          Java, SQL, Python, TypeScript
-    \item \textbf{Technologies:}
-          Spring Boot, AWS (Lambda, S3, SQS, Step Functions), Docker, PostgreSQL, MySQL, Oracle DB, REST APIs, Terraform, Next.js, ELK, NGINX, Kong Gateway
-    \item \textbf{Certificates:}
-          TOEIC 930/990
-\end{itemize}
-\hrule
-\vspace{-1em}
+\resumesectionrule
+\subsection*{\Large Professional Summary}
+{\small\RaggedRight
+      \textbf{Full stack engineer}: \textbf{Next.js}, \textbf{Spring Boot}, \textbf{RESTful APIs}, \textbf{microservices}, \textbf{event-driven} \textbf{AWS} (Lambda, S3, SQS, Step Functions); \textbf{financial servicing} and partner \textbf{integrations} (collections, fees, mandates, reconciliation). \textbf{Terraform}, \textbf{Bash}, \textbf{Docker}, \textbf{Kafka}, \textbf{ELK} \textbf{observability}.
+      \par}
+\resumesectionrule
 \subsection*{\Large Experience}
 
-\parskip=0.1em
+\parskip=0pt
 \headerrow
 {\large\textbf{TymeX}}
 {\textbf{HCMC}}
 \headerrow
 {\emph{Software Engineer}}
 {\emph{Feb 2025 - Present}}
-\begin{itemize}[leftmargin=1em,noitemsep]
-    \item Built \textbf{loan fulfillment} for TymeX's \textbf{next-gen personal loan} platform, enabling \textbf{partner onboarding} and expansion into \textbf{2+ countries}; designed \textbf{AWS serverless} architecture (\textbf{Lambda}, \textbf{S3}, \textbf{SQS}, \textbf{Step Functions}) with \textbf{event-driven} and \textbf{API-based} communication across services for distributed loan processing.
-    \item Developed \textbf{servicing flows} with \textbf{3 third-party integrations} for \textbf{collection}, \textbf{fee}, and \textbf{mandate management}; built \textbf{Java Spring Boot} services to ingest \textbf{1M+} records monthly from third-party reporting, supporting reconciliation and analytics.
-    \item Migrated \textbf{300k accounts} and \textbf{mandates} from a \textbf{third-party loan book} into the internal system with \textbf{99.9\%} data integrity, enabling unified servicing and partner consolidation.
+\begin{itemize}
+      \item Built \textbf{loan fulfillment} and \textbf{financial servicing} for a \textbf{next-gen personal loan} platform spanning \textbf{2+ countries}; designed \textbf{AWS serverless} (\textbf{Lambda}, \textbf{S3}, \textbf{SQS}, \textbf{Step Functions}) with \textbf{Terraform} and \textbf{Bash} for \textbf{infrastructure as code} and automation; \textbf{event-driven}, \textbf{API-based} \textbf{microservices} for processing, \textbf{partner onboarding}, and expansion; \textbf{observability} with \textbf{ELK} and related monitoring.
+      \item Delivered \textbf{servicing flows} with \textbf{3 third-party integrations} for \textbf{collections}, \textbf{fee}, and \textbf{mandate management}; built \textbf{Spring Boot} services ingesting \textbf{1M+} records monthly from partner reporting into \textbf{PostgreSQL}-backed pipelines for \textbf{reconciliation} and \textbf{analytics}.
+      \item Migrated \textbf{300k accounts} and \textbf{mandates} from a \textbf{third-party loan book} with \textbf{99.9\%} data integrity, enabling unified servicing and partner consolidation.
 \end{itemize}
-\parskip=0.1em
+\parskip=0pt
 \headerrow
 {\large\textbf{Renesas Electronics}}
 {\textbf{HCMC}}
 \headerrow
 {\emph{Software Engineer}}
-{\emph{Jul 2023 - Feb 2025}}
-\begin{itemize}[leftmargin=1em,noitemsep]
-    \item Developed \textbf{RBAC-based API services} for license monitoring and audit, integrated with \textbf{Apache Kafka} and \textbf{Camunda BPMN} for process orchestration.
-    \item Enhanced system performance through \textbf{SSR implementation} and created \textbf{data migration tools} that improved data accuracy by 20\%.
-    \item Built a \textbf{scalable microservice architecture} handling \textbf{2TB} of data with 99\% uptime and optimized workflows using \textbf{Docker}.
+{\emph{Aug 2023 - Feb 2025}}
+\begin{itemize}
+      \item Developed \textbf{RBAC-based RESTful API services} for license monitoring and audit; integrated \textbf{Apache Kafka} and \textbf{Camunda BPMN} in a \textbf{microservice} ecosystem for orchestration and \textbf{reliable} processing.
+      \item Improved performance and \textbf{reliability} through \textbf{SSR implementation} and \textbf{data migration tooling} that improved data accuracy by 20\%.
+      \item Built a \textbf{scalable microservice architecture} with production \textbf{REST APIs} handling \textbf{2TB} of data at 99\% uptime; optimized delivery using \textbf{Docker}.
 \end{itemize}
 \headerrow
 {\large\textbf{Success Software Services}}
 {\textbf{HCMC}}
 \headerrow
 {\emph{Software Engineer}}
-{\emph{Feb 2022 - Aug 2022}}
-\begin{itemize}[leftmargin=1em,noitemsep]
-    \item Developed \textbf{internal ERP tools} and \textbf{e-commerce platforms} using \textbf{Next.js} and \textbf{Spring Boot} within an \textbf{Agile Scrum} framework.
-    \item Delivered \textbf{full-stack} features including \textbf{REST APIs}, database design, and frontend components to support business workflows and user-facing flows.
-    \item Improved \textbf{stability}, \textbf{scalability}, and \textbf{UX} for enterprise software by enhancing legacy systems and implementing new features.
+{\emph{April 2023 - July 2023}}
+\begin{itemize}
+      \item Built \textbf{customer-facing} and internal \textbf{enterprise web applications} using \textbf{Next.js} and \textbf{Spring Boot} within \textbf{Agile Scrum}; owned \textbf{end-to-end features} from UI through \textbf{API design}.
+      \item Delivered \textbf{full-stack} capabilities---\textbf{RESTful APIs}, database design, and frontend components---for \textbf{e-commerce} and \textbf{ERP} workflows.
+      \item Improved \textbf{stability}, \textbf{scalability}, and \textbf{UX} for production software by enhancing legacy systems and shipping new capabilities.
 \end{itemize}
+\resumesectionrule
+\subsection*{\Large Skills}
+\hyphenpenalty=1000
+\begin{itemize}
+      \item \textbf{Languages:}
+            Java, SQL, Python, TypeScript
+      \item \textbf{Frontend:}
+            Next.js, SSR
+      \item \textbf{Backend:}
+            Spring Boot, RESTful APIs, microservices
+      \item \textbf{Cloud \& AWS:}
+            AWS Lambda, S3, SQS, Step Functions, IAM, CloudWatch
+      \item \textbf{Data \& messaging:}
+            PostgreSQL, MySQL, Oracle DB, Apache Kafka
+      \item \textbf{DevOps \& IaC:}
+            Docker, Terraform, Infrastructure as Code, Bash, NGINX, Kong Gateway, ELK Stack
+      \item \textbf{Certificates:}
+            TOEIC 930/990
+\end{itemize}
+\resumesectionrule
+\subsection*{\Large Education}
+\headerrow
+{\textbf{University of Information and Technology}}
+{\textbf{HCMVNU, Ho Chi Minh}}
+\headerrow
+{\emph{B.S. Computer Science}}\\
 \end{document}
