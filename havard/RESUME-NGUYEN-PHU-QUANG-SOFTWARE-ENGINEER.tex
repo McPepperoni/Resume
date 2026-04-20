@@ -1,35 +1,35 @@
 \documentclass[a4paper]{article}
-\usepackage{hyperref}
-\usepackage{fullpage}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{textcomp}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\textheight=5in
-\pagestyle{empty}
-\raggedright
-\usepackage[left=0.4in,right=0.4in,bottom=0.3in,top=0.5in]{geometry}
+ \usepackage{hyperref}
+ \usepackage{fullpage}
+ \usepackage{amsmath}
+ \usepackage{amssymb}
+ \usepackage{textcomp}
+ \usepackage[utf8]{inputenc}
+ \usepackage[T1]{fontenc}
+ \textheight=5in
+ \pagestyle{empty}
+ \raggedright
+ \usepackage[left=0.4in,right=0.4in,bottom=0.3in,top=0.5in]{geometry}
 \usepackage{etoolbox,refcount}
 \usepackage{multicol}
 
 \newcounter{countitems}
 \newcounter{nextitemizecount}
 \newcommand{\setupcountitems}{%
-  \stepcounter{nextitemizecount}%
-  \setcounter{countitems}{0}%
-  \preto\item{\stepcounter{countitems}}%
+ \stepcounter{nextitemizecount}%
+ \setcounter{countitems}{0}%
+ \preto\item{\stepcounter{countitems}}%
 }
 \makeatletter
 \newcommand{\computecountitems}{%
-  \edef\@currentlabel{\number\c@countitems}%
-  \label{countitems@\number\numexpr\value{nextitemizecount}-1\relax}%
+ \edef\@currentlabel{\number\c@countitems}%
+ \label{countitems@\number\numexpr\value{nextitemizecount}-1\relax}%
 }
 \newcommand{\nextitemizecount}{%
-  \getrefnumber{countitems@\number\c@nextitemizecount}%
+ \getrefnumber{countitems@\number\c@nextitemizecount}%
 }
 \newcommand{\previtemizecount}{%
-  \getrefnumber{countitems@\number\numexpr\value{nextitemizecount}-1\relax}%
+ \getrefnumber{countitems@\number\numexpr\value{nextitemizecount}-1\relax}%
 }
 \makeatother
 \newenvironment{AutoMultiColItemize}{%
@@ -40,142 +40,172 @@
 
 \def\bull{\vrule height 0.7ex width .7ex depth -.1ex }
 
-% DEFINITIONS FOR RESUME %%%%%%%%%%%%%%%%%%%%%%%
+% DEFINITIONS FOR RESUME (from https://github.com/EISHKARAN/Resume Resume.tex)
 \hypersetup{
-  colorlinks=true,
-  linkcolor=black,
-  filecolor=magenta,
-  urlcolor=black,
-  pdftitle={Nguyen Phu Quang - Software Engineer Resume},
-  pdfpagemode=FullScreen,
-}
+ colorlinks=true,
+ linkcolor=black,
+ filecolor=magenta,
+ urlcolor=black,
+ pdftitle={Nguyen Phu Quang - Resume},
+ pdfpagemode=FullScreen,
+ }
 
 \newcommand{\area} [2] {
-  \vspace*{-9pt}
-  \begin{verse}
-  \textbf{#1} #2
-  \end{verse}
+ \vspace*{-9pt}
+ \begin{verse}
+ \textbf{#1} #2
+ \end{verse}
 }
 
 \newcommand{\lineunder} {
-  \vspace*{-8pt} \\
-  \hspace*{-18pt} \hrulefill \\
+ \vspace*{-8pt} \\
+ \hspace*{-18pt} \hrulefill \\
 }
 
 \newcommand{\header} [1] {
-  {\hspace*{-18pt}\vspace*{6pt} \textsc{#1}}
-  \vspace*{-6pt} \lineunder
+ {\hspace*{-18pt}\vspace*{6pt} \textsc{#1}}
+ \vspace*{-6pt} \lineunder
 }
 
 \newcommand{\employer} [3] {
-  { \textbf{#1} (#2)\\ \underline{\textbf{\emph{#3}}}\\ }
+ { \textbf{#1} (#2)\\ \underline{\textbf{\emph{#3}}}\\ }
 }
 
 \newcommand{\contact} [3] {
-  \vspace*{-10pt}
-  \begin{center}
-  {\Huge \scshape {#1}}\\
-  #2 \\ #3
-  \end{center}
-  \vspace*{-8pt}
+ \vspace*{-10pt}
+ \begin{center}
+ {\Huge \scshape {#1}}\\
+ #2 \\ #3
+ \end{center}
+ \vspace*{-8pt}
 }
 
 \newenvironment{achievements}{
-  \begin{list}
-  {$\bullet$}{\topsep 0pt \itemsep -2pt}}{\vspace*{4pt}
-  \end{list}
+ \begin{list}
+ {$\bullet$}{\topsep 0pt \itemsep -2pt}}{\vspace*{4pt}
+ \end{list}
 }
 
 \newcommand{\schoolwithcourses} [4] {
-  \textbf{#1} #2 $\bullet$ #3\\
-  #4 \\
-  \vspace*{5pt}
+ \textbf{#1} #2 $\bullet$ #3\\
+ #4 \\
+ \vspace*{5pt}
 }
 
 \newcommand{\school} [4] {
-  \textbf{#1} #2 $\bullet$ #3\\
-  #4 \\
+ \textbf{#1} #2 $\bullet$ #3\\
+ #4 \\
 }
-% END RESUME DEFINITIONS %%%%%%%%%%%%%%%%%%%%%%%
+
+\urlstyle{same}
 
 \begin{document}
 \vspace*{-40pt}
 
-%==== Profile ====%
+%==== Profile: location; then phone+email; then GitHub+LinkedIn URLs ====%
 \vspace*{-9pt}
 \begin{center}
   {\Huge \scshape {Nguyen Phu Quang}}\\
   \vspace{1mm}
-  Ho Chi Minh, Vietnam $\cdot$ \underline{quangnguyen16200@gmail.com} $\cdot$ +84 913501314 $\cdot$ \href{https://github.com/McPepperoni}{\underline{Github}} $\cdot$ \href{https://linkedin.com/in/quang-phu-nguyen}{\underline{LinkedIn}} \\
+  {\small Ho Chi Minh, Vietnam $\cdot$ Open to remote}\\
+  \vspace{0.8mm}
+  {\small +84 913501314 $\cdot$
+    \href{mailto:quangnguyen16200@gmail.com}{\underline{quangnguyen16200@gmail.com}}}\\
+  \vspace{0.6mm}
+  {\small
+    \href{https://github.com/McPepperoni}{\underline{https://github.com/McPepperoni}} $\cdot$
+    \href{https://www.linkedin.com/in/quang-phu-nguyen}{\underline{https://www.linkedin.com/in/quang-phu-nguyen}}} \\
 \end{center}
 
-%==== Professional Summary ====%
+%==== Professional Summary (content; template has no equivalent section name) ====%
+\vspace{-2mm}
 \header{Professional Summary}
 \vspace{0.5mm}
-Software Engineer with experience building \textbf{serverless} and \textbf{microservice} systems in \textbf{Java}, \textbf{Spring Boot}, and \textbf{AWS}. Focus on \textbf{event-driven} backends, \textbf{API design}, and \textbf{data migration}; comfortable across full stack with \textbf{Next.js} and \textbf{TypeScript}.
-\vspace{2mm}
+{\small
+  \textit{Software Engineer --- Backend \& distributed systems.} \textbf{Software engineer} building \textbf{distributed}, \textbf{event-driven} systems and \textbf{high-throughput data pipelines}: \textbf{microservices}, \textbf{RESTful APIs}, \textbf{AWS} serverless (\textbf{Lambda}, \textbf{S3}, \textbf{SQS}, \textbf{Step Functions}), \textbf{Spring Boot}, and \textbf{observability} (\textbf{ELK}, monitoring). \textbf{Reliability} at scale on a \textbf{multi-country} lending platform---\textbf{partner integrations}, \textbf{batch ingestion} (\textbf{1M+} records/month), \textbf{IaC} (\textbf{Terraform}, \textbf{Bash}, \textbf{Docker}) on \textbf{Linux}-oriented cloud runtimes.
+}
+\vspace{-0.5mm}
 
-%==== Education ====%
-\header{Education}
-\vspace{0.5mm}
-\textbf{University of Information and Technology, HCMVNU}\hfill Ho Chi Minh\\
-B.S. Computer Science\\
-\vspace{0.5mm}
-
-%==== Skills ====%
-\header{Technical Skills}
-\vspace{0.5mm}
-\begin{tabular}{ l l }
-  Languages: & Java, SQL, Python, TypeScript \\
-  Backend \& APIs: & Spring Boot, REST APIs, Apache Kafka, Camunda BPMN; AWS (Lambda, S3, SQS, Step Functions); Terraform \\
-  Data \& Infra: & PostgreSQL, MySQL, Oracle DB; Docker; ELK, NGINX, Kong Gateway \\
-  Frontend: & Next.js \\
-  Certificates: & TOEIC 930/990 \\
-\end{tabular}
-\vspace{2mm}
-
-%==== Experience ====%
+%==== Experience (same structural pattern as EISHKARAN Experience) ====%
 \header{Experience}
 \vspace{-1mm}
 {\textbf{TymeX}}\hfill Feb 2025 - Present \\
-{\textit{Software Engineer}}\\
+{\textit{Software Engineer}} \
 \vspace{-2mm}
 \begin{itemize}
-  \item Designed and built \textbf{loan fulfillment} for TymeX's \textbf{next-gen personal loan} platform; enabled \textbf{partner onboarding} and expansion into \textbf{2+ countries} via \textbf{AWS serverless} architecture (\textbf{Lambda}, \textbf{S3}, \textbf{SQS}, \textbf{Step Functions}) with \textbf{event-driven} and \textbf{API-based} communication for distributed loan processing.
-  \vspace{-2.5mm}
-  \item Developed \textbf{servicing flows} with \textbf{3 third-party integrations} for \textbf{collection}, \textbf{fee}, and \textbf{mandate management}; built \textbf{Java Spring Boot} as the \textbf{core services} that orchestrate business logic and third-party integrations.
-  \vspace{-2.5mm}
-  \item Implemented separate \textbf{reporting} ingestion that processes \textbf{1M+} records monthly from third-party sources to support reconciliation and analytics. Supported migration of \textbf{300k accounts} and \textbf{mandates} from a \textbf{third-party loan book} into the internal system, achieving \textbf{99.9\%} data integrity and enabling unified servicing and partner consolidation.
-  \vspace{-2.5mm}
-  \item Collaborated with product and operations on requirements and runbooks; wrote tests and documentation to ensure reliable deployments and easier onboarding for new engineers.
+  \item Designed \textbf{scalable}, \textbf{event-driven} processing for a \textbf{multi-country} lending platform: \textbf{AWS serverless} (\textbf{Lambda}, \textbf{S3}, \textbf{SQS}, \textbf{Step Functions}), \textbf{Terraform}/\textbf{Bash} \textbf{infrastructure as code}, and \textbf{API-centric microservices} for \textbf{partner onboarding} and expansion; \textbf{high-throughput} servicing flows with \textbf{ELK}-based \textbf{observability}.
+        \vspace{-2.5mm}
+  \item Delivered \textbf{partner data pipelines}: \textbf{Spring Boot} services ingesting \textbf{1M+} records/month from reporting feeds into \textbf{PostgreSQL} for \textbf{reconciliation} and \textbf{analytics}; \textbf{3 integrations} spanning \textbf{collections}, \textbf{fee}, and \textbf{mandate management}.
+        \vspace{-2.5mm}
+  \item Migrated \textbf{300k accounts} and \textbf{mandates} from a legacy loan book with \textbf{99.9\%} integrity---\textbf{batch-oriented}, auditable transfers enabling unified servicing.
+        \vspace{-2.5mm}
+  \item Curated team \textbf{AI-assisted development} practices (\textbf{IDE} assistants, review conventions, documentation templates) to align safe, consistent adoption of coding assistants across the engineering workflow.
 \end{itemize}
 \vspace{-1.5mm}
 
-{\textbf{Renesas Electronics}}\hfill Jul 2023 - Feb 2025 \\
-{\textit{Software Engineer}}\\
+{\textbf{Renesas Electronics}}\hfill Aug 2023 - Feb 2025 \\
+{\textit{Software Engineer}} \
 \vspace{-2mm}
 \begin{itemize}
-  \item Developed \textbf{RBAC-based API services} for license monitoring and audit; integrated with \textbf{Apache Kafka} and \textbf{Camunda BPMN} for \textbf{event-driven} process orchestration and workflow automation.
-  \vspace{-2.5mm}
-  \item Improved system performance through \textbf{server-side rendering (SSR)} and built \textbf{data migration tools} that increased data accuracy by \textbf{20\%}; reduced manual effort and supported compliance reporting.
-  \vspace{-2.5mm}
-  \item Architected and maintained a \textbf{scalable microservice} system handling \textbf{2TB} of data with \textbf{99\%} uptime; containerized and optimized workflows with \textbf{Docker}.
-  \vspace{-2.5mm}
-  \item Participated in code reviews and sprint planning; contributed to technical design docs and helped standardize API contracts and error-handling patterns across services.
+  \item Built \textbf{RBAC}-backed \textbf{REST APIs} for license monitoring and audit in a \textbf{distributed microservice} landscape; \textbf{Apache Kafka} and \textbf{Camunda BPMN} for orchestration and \textbf{reliable}, \textbf{asynchronous} processing.
+        \vspace{-2.5mm}
+  \item Improved \textbf{latency} and \textbf{reliability}: \textbf{SSR} rollout and \textbf{data migration} tooling raised data accuracy by \textbf{20\%}; reduced operational risk on large migrated datasets.
+        \vspace{-2.5mm}
+  \item Owned \textbf{production REST services} sustaining \textbf{2TB}-scale workloads at \textbf{99\% uptime}; \textbf{Docker}-based deployment and tuning for predictable \textbf{throughput}.
 \end{itemize}
 \vspace{-1.5mm}
 
-{\textbf{Success Software Services}}\hfill Feb 2022 - Aug 2022 \\
-{\textit{Software Engineer}}\\
+{\textbf{Success Software Services}}\hfill Apr 2023 - Jul 2023 \\
+{\textit{Software Engineer}} \
 \vspace{-2mm}
 \begin{itemize}
-  \item Developed \textbf{internal ERP tools} and \textbf{e-commerce platforms} with \textbf{Next.js} and \textbf{Spring Boot} in an \textbf{Agile Scrum} environment; owned end-to-end delivery of features from design to deployment.
-  \vspace{-2.5mm}
-  \item Delivered \textbf{full-stack} solutions: \textbf{REST APIs}, database schema design, and frontend components to support business workflows and customer-facing flows; coordinated with designers and stakeholders to align UI with requirements.
-  \vspace{-2.5mm}
-  \item Improved \textbf{stability}, \textbf{scalability}, and \textbf{user experience} by refactoring legacy systems and shipping new functionality on schedule.
-  \vspace{-2.5mm}
-  \item Wrote unit and integration tests for critical paths; assisted in debugging production issues and documenting runbooks for support and future maintenance.
+  \item Shipped \textbf{enterprise} features end-to-end (\textbf{Next.js}, \textbf{Spring Boot}) in \textbf{Agile Scrum}: UI through \textbf{RESTful API design}, schema changes, and release-ready delivery.
+        \vspace{-2.5mm}
+  \item Delivered \textbf{REST APIs} and data layers supporting \textbf{e-commerce} and \textbf{ERP} workflows under production constraints; partnered on \textbf{performance} and correctness.
+        \vspace{-2.5mm}
+  \item Raised \textbf{stability} and \textbf{scalability} by modernizing legacy paths and adding capabilities without regressions.
 \end{itemize}
+\vspace{-1.5mm}
+
+%==== Projects/Achievements (EISHKARAN: bold title \hfill date; optional \url; then itemize) ====%
+\header{Projects/Achievements}
+{\textbf{RAG \& LLMs}} \hfill Personal project \\
+\vspace{-3mm}
+\begin{itemize}
+  \item \textbf{RAG} pipeline---\textbf{ingestion/chunking}, \textbf{embedding} retrieval, \textbf{vector store}; \textbf{LLM}-integrated \textbf{data preprocessing} and \textbf{synthetic data} generation; \textbf{Python} orchestration; prompt/\textbf{inference} tuning (local experimentation).
+\end{itemize}
+\vspace{-2.5mm}
+{\textbf{Rux}} \hfill Open source \\
+\vspace{-1mm}
+\url{https://github.com/nghien-ot/rux} \\
+\vspace{-1.5mm}
+\begin{itemize}
+  \item Declarative \textbf{type-safe HTTP client} for TypeScript (\textbf{zero runtime dependencies}); schema-driven request/response validation and typed path params; \textbf{Vitest} tests and \textbf{GitHub Actions} CI.
+\end{itemize}
+\vspace{-2mm}
+
+%==== Skills (EISHKARAN: tabular { l l }) ====%
+\header{Skills}
+\vspace{0.5mm}
+\begin{tabular}{ l l }
+  Programming languages:           & Java, SQL, Python, TypeScript                                                                       \\
+  Distributed systems \& backend:  & Microservices, event-driven architecture, RESTful APIs, Spring Boot                                 \\
+  Operating systems \& containers: & Linux (deployment), Docker                                                                          \\
+  Concurrency \& messaging:        & Apache Kafka, AWS SQS (async/event-driven integration)                                              \\
+  Frontend:                        & Next.js, SSR                                                                                        \\
+  Cloud \& AWS:                    & AWS Lambda, S3, SQS, Step Functions, IAM, CloudWatch                                                \\
+  Data stores:                     & PostgreSQL, MySQL, Oracle DB                                                                        \\
+  DevOps \& IaC:                   & Terraform, IaC, Bash, NGINX, Kong Gateway, ELK Stack; Vitest, GitHub Actions                        \\
+  Applied ML (personal):           & RAG, embeddings, vector retrieval, LLM orchestration, data preprocessing, synthetic data generation \\
+\end{tabular}
+
+\vspace{1mm}
+%==== Education \& Certificates (EISHKARAN Education layout: \textbf{School}\hfill City; degree line) ====%
+\header{Education \& Certificates}
+\vspace{0.5mm}
+\textbf{University of Information and Technology, HCMVNU}\hfill Ho Chi Minh\\
+B.S. Computer Science\\
+\vspace{1.5mm}
+\textbf{Certificates:} TOEIC 930/990\\
 
 \end{document}

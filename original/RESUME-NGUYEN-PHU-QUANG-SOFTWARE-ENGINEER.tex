@@ -6,15 +6,10 @@
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
 \usepackage{ragged2e}
-\usepackage{fontawesome}
 \usepackage{enumitem}
 \usepackage{titlesec}
 \setlist[itemize]{nosep,leftmargin=1em,topsep=0pt,partopsep=0pt}
 \titlespacing*{\subsection}{0pt}{0.42em}{0.28em}
-\DeclareFontFamily{U}{fontawesomeOne}{}
-\DeclareFontShape{U}{fontawesomeOne}{m}{n}
-{<-> FontAwesome--fontawesomeone}{}
-\DeclareRobustCommand\FAone{\fontencoding{U}\fontfamily{fontawesomeOne}\selectfont}
 \pagestyle{empty}
 \setlength{\tabcolsep}{0em}
 
@@ -53,19 +48,17 @@
 \begin{center}
       {\LARGE \textbf{Nguyen Phu Quang}}\\
       \vspace{0.2cm}
-      Full Stack Software Engineer\\
+      Software Engineer --- Backend \& distributed systems\\
       \vspace{0.1cm}
       {\small Ho Chi Minh, Vietnam \textbullet\ Open to remote}
-      \vspace{0.5cm}
+      \vspace{0.35cm}
       \\
-      \raisebox{-0.2\height} {\Large \faPhoneSquare} \ \  +84 913501314 \hfill quangnguyen16200@gmail.com \ \ \raisebox{-0.2\height}{\Large \faEnvelopeSquare}
-      \\
-      \raisebox{-0.2\height}{\Large \faGithubSquare} \ \ github.com/McPepperoni \hfill linkedin.com/in/quang-phu-nguyen \ \ \raisebox{-0.2\height}{\Large \faLinkedinSquare}
+      {\small +84 913501314 \quad\textbullet\quad quangnguyen16200@gmail.com \quad\textbullet\quad github.com/McPepperoni \quad\textbullet\quad linkedin.com/in/quang-phu-nguyen}
 \end{center}
 \resumesectionrule
 \subsection*{\Large Professional Summary}
 {\small\RaggedRight
-      \textbf{Full stack engineer}: \textbf{Next.js}, \textbf{Spring Boot}, \textbf{RESTful APIs}, \textbf{microservices}, \textbf{event-driven} \textbf{AWS} (Lambda, S3, SQS, Step Functions); \textbf{financial servicing} and partner \textbf{integrations} (collections, fees, mandates, reconciliation). \textbf{Terraform}, \textbf{Bash}, \textbf{Docker}, \textbf{Kafka}, \textbf{ELK} \textbf{observability}.
+      \textbf{Software engineer} building \textbf{distributed}, \textbf{event-driven} systems and \textbf{high-throughput data pipelines}: \textbf{microservices}, \textbf{RESTful APIs}, \textbf{AWS} serverless (\textbf{Lambda}, \textbf{S3}, \textbf{SQS}, \textbf{Step Functions}), \textbf{Spring Boot}, and \textbf{observability} (\textbf{ELK}, monitoring). \textbf{Reliability} at scale on a \textbf{multi-country} lending platform---\textbf{partner integrations}, \textbf{batch ingestion} (\textbf{1M+} records/month), \textbf{IaC} (\textbf{Terraform}, \textbf{Bash}, \textbf{Docker}) on \textbf{Linux}-oriented cloud runtimes.
       \par}
 \resumesectionrule
 \subsection*{\Large Experience}
@@ -78,9 +71,10 @@
 {\emph{Software Engineer}}
 {\emph{Feb 2025 - Present}}
 \begin{itemize}
-      \item Built \textbf{loan fulfillment} and \textbf{financial servicing} for a \textbf{next-gen personal loan} platform spanning \textbf{2+ countries}; designed \textbf{AWS serverless} (\textbf{Lambda}, \textbf{S3}, \textbf{SQS}, \textbf{Step Functions}) with \textbf{Terraform} and \textbf{Bash} for \textbf{infrastructure as code} and automation; \textbf{event-driven}, \textbf{API-based} \textbf{microservices} for processing, \textbf{partner onboarding}, and expansion; \textbf{observability} with \textbf{ELK} and related monitoring.
-      \item Delivered \textbf{servicing flows} with \textbf{3 third-party integrations} for \textbf{collections}, \textbf{fee}, and \textbf{mandate management}; built \textbf{Spring Boot} services ingesting \textbf{1M+} records monthly from partner reporting into \textbf{PostgreSQL}-backed pipelines for \textbf{reconciliation} and \textbf{analytics}.
-      \item Migrated \textbf{300k accounts} and \textbf{mandates} from a \textbf{third-party loan book} with \textbf{99.9\%} data integrity, enabling unified servicing and partner consolidation.
+      \item Designed \textbf{scalable}, \textbf{event-driven} processing for a \textbf{multi-country} lending platform: \textbf{AWS serverless} (\textbf{Lambda}, \textbf{S3}, \textbf{SQS}, \textbf{Step Functions}), \textbf{Terraform}/\textbf{Bash} \textbf{infrastructure as code}, and \textbf{API-centric microservices} for \textbf{partner onboarding} and expansion; \textbf{high-throughput} servicing flows with \textbf{ELK}-based \textbf{observability}.
+      \item Delivered \textbf{partner data pipelines}: \textbf{Spring Boot} services ingesting \textbf{1M+} records/month from reporting feeds into \textbf{PostgreSQL} for \textbf{reconciliation} and \textbf{analytics}; \textbf{3 integrations} spanning \textbf{collections}, \textbf{fee}, and \textbf{mandate management}.
+      \item Migrated \textbf{300k accounts} and \textbf{mandates} from a legacy loan book with \textbf{99.9\%} integrity---\textbf{batch-oriented}, auditable transfers enabling unified servicing.
+      \item Curated team \textbf{AI-assisted development} practices (\textbf{IDE} assistants, review conventions, documentation templates) to align safe, consistent adoption of coding assistants across the engineering workflow.
 \end{itemize}
 \parskip=0pt
 \headerrow
@@ -90,9 +84,9 @@
 {\emph{Software Engineer}}
 {\emph{Aug 2023 - Feb 2025}}
 \begin{itemize}
-      \item Developed \textbf{RBAC-based RESTful API services} for license monitoring and audit; integrated \textbf{Apache Kafka} and \textbf{Camunda BPMN} in a \textbf{microservice} ecosystem for orchestration and \textbf{reliable} processing.
-      \item Improved performance and \textbf{reliability} through \textbf{SSR implementation} and \textbf{data migration tooling} that improved data accuracy by 20\%.
-      \item Built a \textbf{scalable microservice architecture} with production \textbf{REST APIs} handling \textbf{2TB} of data at 99\% uptime; optimized delivery using \textbf{Docker}.
+      \item Built \textbf{RBAC}-backed \textbf{REST APIs} for license monitoring and audit in a \textbf{distributed microservice} landscape; \textbf{Apache Kafka} and \textbf{Camunda BPMN} for orchestration and \textbf{reliable}, \textbf{asynchronous} processing.
+      \item Improved \textbf{latency} and \textbf{reliability}: \textbf{SSR} rollout and \textbf{data migration} tooling raised data accuracy by \textbf{20\%}; reduced operational risk on large migrated datasets.
+      \item Owned \textbf{production REST services} sustaining \textbf{2TB}-scale workloads at \textbf{99\% uptime}; \textbf{Docker}-based deployment and tuning for predictable \textbf{throughput}.
 \end{itemize}
 \headerrow
 {\large\textbf{Success Software Services}}
@@ -101,9 +95,15 @@
 {\emph{Software Engineer}}
 {\emph{April 2023 - July 2023}}
 \begin{itemize}
-      \item Built \textbf{customer-facing} and internal \textbf{enterprise web applications} using \textbf{Next.js} and \textbf{Spring Boot} within \textbf{Agile Scrum}; owned \textbf{end-to-end features} from UI through \textbf{API design}.
-      \item Delivered \textbf{full-stack} capabilities---\textbf{RESTful APIs}, database design, and frontend components---for \textbf{e-commerce} and \textbf{ERP} workflows.
-      \item Improved \textbf{stability}, \textbf{scalability}, and \textbf{UX} for production software by enhancing legacy systems and shipping new capabilities.
+      \item Shipped \textbf{enterprise} features end-to-end (\textbf{Next.js}, \textbf{Spring Boot}) in \textbf{Agile Scrum}: UI through \textbf{RESTful API design}, schema changes, and release-ready delivery.
+      \item Delivered \textbf{REST APIs} and data layers supporting \textbf{e-commerce} and \textbf{ERP} workflows under production constraints; partnered on \textbf{performance} and correctness.
+      \item Raised \textbf{stability} and \textbf{scalability} by modernizing legacy paths and adding capabilities without regressions.
+\end{itemize}
+\resumesectionrule
+\subsection*{\Large Personal Projects}
+\begin{itemize}
+      \item \textbf{RAG \& LLMs:} \textbf{RAG} pipeline---\textbf{ingestion/chunking}, \textbf{embedding} retrieval, \textbf{vector store}; \textbf{LLM}-integrated \textbf{data preprocessing} and \textbf{synthetic data} generation; \textbf{Python} orchestration; prompt/\textbf{inference} tuning (local experimentation).
+      \item \textbf{Rux (\texttt{github.com/nghien-ot/rux}):} Open-source \textbf{TypeScript} library---declarative \textbf{type-safe HTTP client} (\textbf{zero runtime dependencies}), schema-driven request/response validation and typed path params; \textbf{Vitest} tests and \textbf{GitHub Actions} CI.
 \end{itemize}
 \resumesectionrule
 \subsection*{\Large Skills}
@@ -111,24 +111,29 @@
 \begin{itemize}
       \item \textbf{Languages:}
             Java, SQL, Python, TypeScript
+      \item \textbf{Distributed systems \& backend:}
+            Microservices, event-driven architecture, RESTful APIs, Spring Boot
+      \item \textbf{Operating systems \& containers:}
+            Linux (deployment), Docker
+      \item \textbf{Concurrency \& messaging:}
+            Apache Kafka, AWS SQS (asynchronous/event-driven integration)
       \item \textbf{Frontend:}
             Next.js, SSR
-      \item \textbf{Backend:}
-            Spring Boot, RESTful APIs, microservices
       \item \textbf{Cloud \& AWS:}
             AWS Lambda, S3, SQS, Step Functions, IAM, CloudWatch
-      \item \textbf{Data \& messaging:}
-            PostgreSQL, MySQL, Oracle DB, Apache Kafka
+      \item \textbf{Data stores:}
+            PostgreSQL, MySQL, Oracle DB
       \item \textbf{DevOps \& IaC:}
-            Docker, Terraform, Infrastructure as Code, Bash, NGINX, Kong Gateway, ELK Stack
-      \item \textbf{Certificates:}
-            TOEIC 930/990
+            Terraform, Infrastructure as Code, Bash, NGINX, Kong Gateway, ELK Stack; Vitest, GitHub Actions
+      \item \textbf{Applied ML (personal projects):}
+            RAG, embeddings, vector retrieval, LLM orchestration, data preprocessing, synthetic data generation
 \end{itemize}
 \resumesectionrule
-\subsection*{\Large Education}
+\subsection*{\Large Education \& Certificates}
 \headerrow
 {\textbf{University of Information and Technology}}
 {\textbf{HCMVNU, Ho Chi Minh}}
-\headerrow
-{\emph{B.S. Computer Science}}\\
+\emph{B.S. Computer Science}
+\vspace{0.35em}
+\par\noindent{\small\textbf{Certificates:} TOEIC 930/990}
 \end{document}
