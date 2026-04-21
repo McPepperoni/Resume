@@ -1,3 +1,9 @@
+% =============================================================================
+% HARVARD FORMAT = EISHKARAN template (https://github.com/EISHKARAN/Resume).
+% Build ONLY this file for: serif body, \textsc section headers, A4/fullpage.
+% NOT original/RESUME-...tex — that copy uses Lato + \Large subsection + rules.
+% Output PDF is written next to THIS .tex (havard/ folder).
+% =============================================================================
 \documentclass[a4paper]{article}
  \usepackage{hyperref}
  \usepackage{fullpage}
@@ -31,7 +37,7 @@
 \newcommand{\previtemizecount}{%
  \getrefnumber{countitems@\number\numexpr\value{nextitemizecount}-1\relax}%
 }
-\makeatother
+\makeatother 
 \newenvironment{AutoMultiColItemize}{%
 \ifnumcomp{\nextitemizecount}{>}{3}{\begin{multicols}{2}}{}%
 \setupcountitems\begin{itemize}}%
@@ -46,9 +52,11 @@
  linkcolor=black,
  filecolor=magenta,
  urlcolor=black,
- pdftitle={Nguyen Phu Quang - Resume},
+ pdftitle={Nguyen Phu Quang - Resume Harvard EISHKARAN format},
+ pdfauthor={Nguyen Phu Quang},
+ pdfsubject={Compile from havard/ folder; not the Lato original template},
  pdfpagemode=FullScreen,
- }
+}
 
 \newcommand{\area} [2] {
  \vspace*{-9pt}
@@ -96,34 +104,27 @@
  \textbf{#1} #2 $\bullet$ #3\\
  #4 \\
 }
+% END RESUME DEFINITIONS %%%%%%%%%%%%%%%%%%%%%%%
 
 \urlstyle{same}
 
 \begin{document}
 \vspace*{-40pt}
 
-%==== Profile: location; then phone+email; then GitHub+LinkedIn URLs ====%
+%==== Profile (same structure as https://github.com/EISHKARAN/Resume Resume.tex) ====%
 \vspace*{-9pt}
 \begin{center}
-  {\Huge \scshape {Nguyen Phu Quang}}\\
-  \vspace{1mm}
-  {\small Ho Chi Minh, Vietnam $\cdot$ Open to remote}\\
-  \vspace{0.8mm}
-  {\small +84 913501314 $\cdot$
-    \href{mailto:quangnguyen16200@gmail.com}{\underline{quangnguyen16200@gmail.com}}}\\
-  \vspace{0.6mm}
-  {\small
-    \href{https://github.com/McPepperoni}{\underline{https://github.com/McPepperoni}} $\cdot$
-    \href{https://www.linkedin.com/in/quang-phu-nguyen}{\underline{https://www.linkedin.com/in/quang-phu-nguyen}}} \\
+ {\Huge \scshape {Nguyen Phu Quang}}\\
+ \vspace{1mm}
+ Ho Chi Minh, Vietnam $\cdot$ Open to remote $\cdot$ \underline{quangnguyen16200@gmail.com} $\cdot$ +84 913501314 $\cdot$ \href{https://github.com/McPepperoni}{\underline{Github}} $\cdot$ \href{https://www.linkedin.com/in/quang-phu-nguyen}{\underline{Linkedin}} \\
 \end{center}
-
-%==== Professional Summary (content; template has no equivalent section name) ====%
+%==== Professional Summary ====%
 \vspace{-2mm}
 \header{Professional Summary}
 \vspace{0.5mm}
-{\small
-  \textit{Software Engineer - Backend \& distributed systems.} \textbf{Software engineer} building \textbf{distributed}, \textbf{event-driven} systems and \textbf{high-throughput data pipelines}: \textbf{microservices}, \textbf{RESTful APIs}, \textbf{AWS} serverless (\textbf{Lambda}, \textbf{S3}, \textbf{SQS}, \textbf{Step Functions}), \textbf{Spring Boot}, and \textbf{observability} (\textbf{ELK}, monitoring). \textbf{Reliability} at scale on a \textbf{multi-country} lending platform-\textbf{partner integrations}, \textbf{batch ingestion} (\textbf{1M+} records/month), \textbf{IaC} (\textbf{Terraform}, \textbf{Bash}, \textbf{Docker}) on \textbf{Linux}-oriented cloud runtimes.
-}
+\textit{Software Engineer - Backend \& distributed systems.}\par\vspace{1.5mm}
+
+Backend engineer who designs and runs event-driven microservices and high-throughput data pipelines for a multi-country lending platform. Focus on dependable partner integrations, batch reconciliation, and observable production behavior, including high-volume ingestion (\textbf{1M+} records/month) and migration-heavy servicing workloads.\par
 \vspace{-0.5mm}
 
 %==== Experience (same structural pattern as EISHKARAN Experience) ====%
@@ -137,7 +138,7 @@
         \vspace{-2.5mm}
   \item Delivered \textbf{partner data pipelines}: \textbf{Spring Boot} services ingesting \textbf{1M+} records/month from reporting feeds into \textbf{PostgreSQL} for \textbf{reconciliation} and \textbf{analytics}; \textbf{3 integrations} spanning \textbf{collections}, \textbf{fee}, and \textbf{mandate management}.
         \vspace{-2.5mm}
-  \item Migrated \textbf{300k accounts} and \textbf{mandates} from a legacy loan book with \textbf{99.9\%} integrity-\textbf{batch-oriented}, auditable transfers enabling unified servicing.
+  \item Migrated \textbf{300k accounts} and \textbf{mandates} from a legacy loan book with \textbf{99.9\%} integrity - \textbf{batch-oriented}, auditable transfers enabling unified servicing.
         \vspace{-2.5mm}
   \item Curated team \textbf{AI-assisted development} practices (\textbf{IDE} assistants, review conventions, documentation templates) to align safe, consistent adoption of coding assistants across the engineering workflow.
 \end{itemize}
@@ -172,7 +173,7 @@
 {\textbf{RAG \& LLMs}} \hfill Personal project \\
 \vspace{-3mm}
 \begin{itemize}
-  \item \textbf{RAG} pipeline-\textbf{ingestion/chunking}, \textbf{embedding} retrieval, \textbf{vector store}; \textbf{LLM}-integrated \textbf{data preprocessing} and \textbf{synthetic data} generation; \textbf{Python} orchestration; prompt/\textbf{inference} tuning (local experimentation).
+  \item \textbf{RAG} pipeline (\textbf{ingestion/chunking}, \textbf{embedding} retrieval, \textbf{vector store}); \textbf{LLM}-integrated \textbf{data preprocessing} and \textbf{synthetic data} generation; \textbf{Python} orchestration; prompt/\textbf{inference} tuning (local experimentation).
 \end{itemize}
 \vspace{-2.5mm}
 {\textbf{Rux}} \hfill Open source \\
@@ -188,15 +189,15 @@
 \header{Skills}
 \vspace{0.5mm}
 \begin{tabular}{ l l }
-  Programming languages:           & Java, SQL, Python, TypeScript                                                                       \\
-  Distributed systems \& backend:  & Microservices, event-driven architecture, RESTful APIs, Spring Boot                                 \\
-  Operating systems \& containers: & Linux (deployment), Docker                                                                          \\
-  Concurrency \& messaging:        & Apache Kafka, AWS SQS (async/event-driven integration)                                              \\
-  Frontend:                        & Next.js, SSR                                                                                        \\
-  Cloud \& AWS:                    & AWS Lambda, S3, SQS, Step Functions, IAM, CloudWatch                                                \\
-  Data stores:                     & PostgreSQL, MySQL, Oracle DB                                                                        \\
-  DevOps \& IaC:                   & Terraform, IaC, Bash, NGINX, Kong Gateway, ELK Stack; Vitest, GitHub Actions                        \\
-  Applied ML (personal):           & RAG, embeddings, vector retrieval, LLM orchestration, data preprocessing, synthetic data generation \\
+ Programming languages: & Java, SQL, Python, TypeScript \\
+ Distributed systems \& backend: & Microservices, event-driven architecture, RESTful APIs, Spring Boot \\
+ Operating systems \& containers: & Linux (deployment), Docker \\
+ Concurrency \& messaging: & Apache Kafka, AWS SQS (async/event-driven integration) \\
+ Frontend: & Next.js, SSR \\
+ Cloud \& AWS: & AWS Lambda, S3, SQS, Step Functions, IAM, CloudWatch \\
+ Data stores: & PostgreSQL, MySQL, Oracle DB \\
+ DevOps \& IaC: & Terraform, IaC, Bash, NGINX, Kong Gateway, ELK Stack; Vitest, GitHub Actions \\
+ Applied ML (personal): & RAG, embeddings, vector retrieval, LLM orchestration, data preprocessing, synthetic data generation \\
 \end{tabular}
 
 \vspace{1mm}
