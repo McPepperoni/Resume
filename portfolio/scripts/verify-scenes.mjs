@@ -1,5 +1,8 @@
 import { existsSync, readFileSync } from 'node:fs';
 
+import { profile } from '../src/data/resume.ts';
+import { sceneSeoItems } from '../src/data/seo.ts';
+
 const readOptional = (path) => (existsSync(path) ? readFileSync(path, 'utf8') : '');
 
 const files = {
@@ -189,6 +192,157 @@ requireMatch('llms.txt missing portfolio summary', files.llms, /# Nguyen Phu Qua
 requireMatch('llm.txt compatibility pointer missing', files.llm, /llms\.txt/);
 requireMatch('OG generator missing', files.ogScript, /sceneSeoItems[\s\S]*ogImage[\s\S]*PNG/);
 requireMatch('prebuild OG generation missing', files.package, /"prebuild":\s*"node scripts\/generate-og\.mjs"/);
+
+const ogFrame = { x1: 44, y1: 44, x2: 1156, y2: 586 };
+const ogContentX = 88;
+const ogContentRight = 1112;
+const ogContentWidth = ogContentRight - ogContentX;
+const ogMetaPlate = { x1: 866, y1: 104, x2: 1110, y2: 254 };
+const measureOgText = (text, scale) => text.toUpperCase().length * 6 * scale;
+const ogTextBox = (line, x, y, scale, label, kind = 'content') => ({
+	label,
+	kind,
+	line,
+	x1: x,
+	y1: y,
+	x2: x + measureOgText(line, scale),
+	y2: y + 7 * scale
+});
+
+const ogBoxesOverlap = (a, b) => a.x1 < b.x2 && a.x2 > b.x1 && a.y1 < b.y2 && a.y2 > b.y1;
+
+const splitLongOgWord = (word, maxWidth, scale) => {
+	const chunks = [];
+	let chunkText = '';
+	for (const char of word) {
+		const next = `${chunkText}${char}`;
+		if (chunkText && measureOgText(next, scale) > maxWidth) {
+			chunks.push(chunkText);
+			chunkText = char;
+		} else {
+			chunkText = next;
+		}
+	}
+	if (chunkText) chunks.push(chunkText);
+	return chunks;
+};
+
+const fitOgEllipsis = (line, maxWidth, scale) => {
+	let result = line.trimEnd();
+	while (result && measureOgText(`${result}...`, scale) > maxWidth) {
+		result = result.slice(0, -1).trimEnd();
+	}
+	return result ? `${result}...` : '...';
+};
+
+const wrapOgText = (text, maxWidth, scale, maxLines = Number.POSITIVE_INFINITY) => {
+	const words = text.trim().replace(/\s+/g, ' ').split(' ').flatMap((word) => {
+		return measureOgText(word, scale) <= maxWidth ? [word] : splitLongOgWord(word, maxWidth, scale);
+	});
+	const lines = [];
+	let line = '';
+	let truncated = false;
+
+	for (let index = 0; index < words.length; index += 1) {
+		const word = words[index];
+		const next = line ? `${line} ${word}` : word;
+		if (measureOgText(next, scale) <= maxWidth) {
+			line = next;
+			continue;
+		}
+		if (line) {
+			if (lines.length === maxLines - 1) {
+				lines.push(fitOgEllipsis(line, maxWidth, scale));
+				truncated = true;
+				return { lines, truncated };
+			}
+			lines.push(line);
+			line = word;
+		} else {
+			if (lines.length === maxLines - 1 && index < words.length - 1) {
+				lines.push(fitOgEllipsis(word, maxWidth, scale));
+				truncated = true;
+				return { lines, truncated };
+			}
+			lines.push(word);
+			line = '';
+		}
+	}
+
+	if (line) {
+		if (lines.length < maxLines) {
+			lines.push(line);
+		} else {
+			lines[lines.length - 1] = fitOgEllipsis(lines[lines.length - 1], maxWidth, scale);
+			truncated = true;
+		}
+	}
+
+	return { lines, truncated };
+};
+
+const fitOgTextBlock = (text, maxWidth, scaleOptions, maxLines) => {
+	for (const scale of scaleOptions) {
+		const wrapped = wrapOgText(text, maxWidth, scale, maxLines);
+		if (!wrapped.truncated) return { ...wrapped, scale };
+	}
+	const scale = scaleOptions[scaleOptions.length - 1];
+	return { ...wrapOgText(text, maxWidth, scale, maxLines), scale };
+};
+
+const normalizeOgTitle = (title) => {
+	const escapedName = profile.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+	return title
+		.replace(new RegExp(escapedName, 'gi'), '')
+		.replace(/\s*\|\s*/g, ' ')
+		.replace(/\s+/g, ' ')
+		.trim();
+};
+
+for (const [index, scene] of sceneSeoItems.entries()) {
+	const imagePath = `public${scene.ogImage}`;
+	if (!existsSync(imagePath)) {
+		failures.push(`OG image missing: ${imagePath}`);
+	}
+
+	const boxes = [
+		ogTextBox(`${String(index + 1).padStart(2, '0')} ${scene.label}`, 124, 104, 4, scene.ogImage),
+		ogTextBox(profile.name, ogContentX, 160, 6, scene.ogImage)
+	];
+
+	const metaLabel = fitOgTextBlock(scene.label, 196, [4, 3, 2], 1);
+	if (metaLabel.truncated) failures.push(`OG meta label truncated: ${scene.ogImage}`);
+	metaLabel.lines.forEach((line, lineIndex) => {
+		boxes.push(ogTextBox(line, ogMetaPlate.x1 + 24, ogMetaPlate.y1 + 76 + lineIndex * 28, metaLabel.scale, scene.ogImage, 'meta'));
+	});
+
+	const metaDetail = fitOgTextBlock(scene.detail, 196, [2], 2);
+	if (metaDetail.truncated) failures.push(`OG meta detail truncated: ${scene.ogImage}`);
+	metaDetail.lines.forEach((line, lineIndex) => {
+		boxes.push(ogTextBox(line, ogMetaPlate.x1 + 24, ogMetaPlate.y1 + 116 + lineIndex * 22, metaDetail.scale, scene.ogImage, 'meta'));
+	});
+
+	const titleBlock = fitOgTextBlock(normalizeOgTitle(scene.title) || scene.label, ogContentWidth, [7, 6, 5], 3);
+	if (titleBlock.truncated) failures.push(`OG title truncated: ${scene.ogImage}`);
+	titleBlock.lines.forEach((line, lineIndex) => {
+		boxes.push(ogTextBox(line, ogContentX, 270 + lineIndex * titleBlock.scale * 8, titleBlock.scale, scene.ogImage));
+	});
+
+	const descriptionBlock = fitOgTextBlock(scene.description, ogContentWidth, [3, 2], 3);
+	if (descriptionBlock.truncated) failures.push(`OG description truncated: ${scene.ogImage}`);
+	descriptionBlock.lines.forEach((line, lineIndex) => {
+		boxes.push(ogTextBox(line, ogContentX + 4, 484 + lineIndex * descriptionBlock.scale * 10, descriptionBlock.scale, scene.ogImage));
+	});
+
+	for (const box of boxes) {
+		if (box.x1 < ogFrame.x1 || box.x2 > ogFrame.x2 || box.y1 < ogFrame.y1 || box.y2 > ogFrame.y2) {
+			failures.push(`OG text out of frame: ${box.label} "${box.line}"`);
+		}
+		if (box.kind !== 'meta' && ogBoxesOverlap(box, ogMetaPlate)) {
+			failures.push(`OG text overlaps metadata plate: ${box.label} "${box.line}"`);
+		}
+	}
+}
 
 const expectedOrder = [
 	'id="intro"',

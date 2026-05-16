@@ -111,21 +111,95 @@ const drawText = (image, text, x, y, scale, color) => {
 	}
 };
 
-const wrapText = (text, maxChars) => {
-	const words = text.split(/\s+/);
+const measureText = (text, scale) => text.toUpperCase().length * 6 * scale;
+
+const splitLongWord = (word, maxWidth, scale) => {
+	const chunks = [];
+	let chunkText = '';
+	for (const char of word) {
+		const next = `${chunkText}${char}`;
+		if (chunkText && measureText(next, scale) > maxWidth) {
+			chunks.push(chunkText);
+			chunkText = char;
+		} else {
+			chunkText = next;
+		}
+	}
+	if (chunkText) chunks.push(chunkText);
+	return chunks;
+};
+
+const fitWithEllipsis = (line, maxWidth, scale) => {
+	let result = line.trimEnd();
+	while (result && measureText(`${result}...`, scale) > maxWidth) {
+		result = result.slice(0, -1).trimEnd();
+	}
+	return result ? `${result}...` : '...';
+};
+
+const wrapText = (text, maxWidth, scale, maxLines = Number.POSITIVE_INFINITY) => {
+	const words = text.trim().replace(/\s+/g, ' ').split(' ').flatMap((word) => {
+		return measureText(word, scale) <= maxWidth ? [word] : splitLongWord(word, maxWidth, scale);
+	});
 	const lines = [];
 	let line = '';
-	for (const word of words) {
+	let truncated = false;
+
+	for (let index = 0; index < words.length; index += 1) {
+		const word = words[index];
 		const next = line ? `${line} ${word}` : word;
-		if (next.length > maxChars && line) {
+		if (measureText(next, scale) <= maxWidth) {
+			line = next;
+			continue;
+		}
+
+		if (line) {
+			if (lines.length === maxLines - 1) {
+				lines.push(fitWithEllipsis(line, maxWidth, scale));
+				truncated = true;
+				return { lines, truncated };
+			}
 			lines.push(line);
 			line = word;
 		} else {
-			line = next;
+			if (lines.length === maxLines - 1 && index < words.length - 1) {
+				lines.push(fitWithEllipsis(word, maxWidth, scale));
+				truncated = true;
+				return { lines, truncated };
+			}
+			lines.push(word);
+			line = '';
 		}
 	}
-	if (line) lines.push(line);
-	return lines.slice(0, 4);
+
+	if (line) {
+		if (lines.length < maxLines) {
+			lines.push(line);
+		} else {
+			lines[lines.length - 1] = fitWithEllipsis(lines[lines.length - 1], maxWidth, scale);
+			truncated = true;
+		}
+	}
+
+	return { lines, truncated };
+};
+
+const fitTextBlock = (text, maxWidth, scaleOptions, maxLines) => {
+	for (const scale of scaleOptions) {
+		const wrapped = wrapText(text, maxWidth, scale, maxLines);
+		if (!wrapped.truncated) return { ...wrapped, scale };
+	}
+	const scale = scaleOptions[scaleOptions.length - 1];
+	return { ...wrapText(text, maxWidth, scale, maxLines), scale };
+};
+
+const normalizeTitle = (title) => {
+	const escapedName = profile.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+	return title
+		.replace(new RegExp(escapedName, 'gi'), '')
+		.replace(/\s*\|\s*/g, ' ')
+		.replace(/\s+/g, ' ')
+		.trim();
 };
 
 const crcTable = new Uint32Array(256).map((_, index) => {
@@ -172,25 +246,44 @@ const encodePng = (pixels) => {
 
 const renderScene = (scene, index) => {
 	const image = createImage();
+	const frame = { x: 44, y: 44, width: WIDTH - 88, height: HEIGHT - 88 };
+	const contentX = 88;
+	const contentRight = WIDTH - 88;
+	const contentWidth = contentRight - contentX;
+	const metaPlate = { x: WIDTH - 334, y: 104, width: 244, height: 150 };
 	fillRect(image, 0, 0, WIDTH, HEIGHT, palette.void);
 	for (let x = 0; x < WIDTH; x += 64) fillRect(image, x, 0, 2, HEIGHT, palette.gunmetal);
 	for (let y = 0; y < HEIGHT; y += 64) fillRect(image, 0, y, WIDTH, 2, palette.gunmetal);
-	strokeRect(image, 44, 44, WIDTH - 88, HEIGHT - 88, palette.mint, 4);
+	strokeRect(image, frame.x, frame.y, frame.width, frame.height, palette.mint, 4);
 	fillRect(image, 72, 72, 190, 8, palette.mint);
 	fillRect(image, 88, 108, 22, 22, palette.mint);
 	drawText(image, `${String(index + 1).padStart(2, '0')} ${scene.label}`, 124, 104, 4, palette.mint);
-	drawText(image, profile.name, 88, 170, 8, palette.white);
-	const titleLines = wrapText(scene.title.replace(` | ${profile.name}`, ''), 28);
-	titleLines.forEach((line, lineIndex) => {
-		drawText(image, line, 88, 270 + lineIndex * 56, 7, palette.white);
+
+	fillRect(image, metaPlate.x, metaPlate.y, metaPlate.width, metaPlate.height, palette.carbon);
+	strokeRect(image, metaPlate.x, metaPlate.y, metaPlate.width, metaPlate.height, palette.blue, 4);
+	fillRect(image, metaPlate.x + 24, metaPlate.y + 26, 46, 8, palette.blue);
+	drawText(image, 'ROUTE', metaPlate.x + 24, metaPlate.y + 48, 2, palette.muted);
+	const metaLabel = fitTextBlock(scene.label, metaPlate.width - 48, [4, 3, 2], 1);
+	metaLabel.lines.forEach((line, lineIndex) => {
+		drawText(image, line, metaPlate.x + 24, metaPlate.y + 76 + lineIndex * 28, metaLabel.scale, palette.blue);
 	});
-	const detailLines = wrapText(scene.description, 68);
-	detailLines.slice(0, 2).forEach((line, lineIndex) => {
-		drawText(image, line, 92, 500 + lineIndex * 30, 3, palette.muted);
+	const detailBlock = fitTextBlock(scene.detail, metaPlate.width - 48, [2], 2);
+	detailBlock.lines.forEach((line, lineIndex) => {
+		drawText(image, line, metaPlate.x + 24, metaPlate.y + 116 + lineIndex * 22, detailBlock.scale, palette.muted);
 	});
-	fillRect(image, WIDTH - 310, 118, 220, 220, palette.carbon);
-	strokeRect(image, WIDTH - 310, 118, 220, 220, palette.blue, 4);
-	drawText(image, scene.chapter.replace('-', ' '), WIDTH - 282, 210, 5, palette.blue);
+
+	drawText(image, profile.name, contentX, 160, 6, palette.white);
+	const titleText = normalizeTitle(scene.title) || scene.label;
+	const titleBlock = fitTextBlock(titleText, contentWidth, [7, 6, 5], 3);
+	titleBlock.lines.forEach((line, lineIndex) => {
+		drawText(image, line, contentX, 270 + lineIndex * titleBlock.scale * 8, titleBlock.scale, palette.white);
+	});
+
+	const descriptionBlock = fitTextBlock(scene.description, contentWidth, [3, 2], 3);
+	descriptionBlock.lines.forEach((line, lineIndex) => {
+		drawText(image, line, contentX + 4, 484 + lineIndex * descriptionBlock.scale * 10, descriptionBlock.scale, palette.muted);
+	});
+
 	return encodePng(image);
 };
 
