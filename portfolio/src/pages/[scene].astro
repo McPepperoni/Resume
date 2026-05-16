@@ -1,0 +1,26 @@
+---
+import PortfolioStory from '../components/PortfolioStory.astro';
+import SeoHead from '../components/SeoHead.astro';
+import { routedSceneSeoItems, type SceneSeo } from '../data/seo';
+
+export const getStaticPaths = () =>
+	routedSceneSeoItems.map((scene) => ({
+		params: { scene: scene.slug },
+		props: { scene }
+	}));
+
+type Props = {
+	scene: SceneSeo;
+};
+
+const { scene } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<SeoHead scene={scene} />
+	</head>
+	<body>
+		<PortfolioStory initialSceneId={scene.sceneId} />
+	</body>
+</html>

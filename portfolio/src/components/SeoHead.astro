@@ -1,0 +1,79 @@
+---
+import { profile } from '../data/resume';
+import { absoluteUrl, resolveSiteUrl, sceneSeoItems, type SceneSeo } from '../data/seo';
+
+type Props = {
+	scene: SceneSeo;
+};
+
+const { scene } = Astro.props;
+const site = resolveSiteUrl(Astro.site);
+const canonicalUrl = absoluteUrl(scene.route, site);
+const ogImageUrl = absoluteUrl(scene.ogImage, site);
+const keywords = scene.keywords.join(', ');
+const personJson = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: profile.name,
+	jobTitle: 'Software Engineer',
+	email: profile.email,
+	telephone: profile.phone,
+	url: absoluteUrl('/', site),
+	sameAs: [profile.github, profile.linkedin],
+	address: {
+		'@type': 'PostalAddress',
+		addressLocality: 'Ho Chi Minh',
+		addressCountry: 'Vietnam'
+	},
+	knowsAbout: [
+		'Backend engineering',
+		'Distributed systems',
+		'Data pipelines',
+		'AWS',
+		'Spring Boot',
+		'AI-assisted development'
+	]
+};
+const websiteJson = {
+	'@context': 'https://schema.org',
+	'@type': 'WebSite',
+	name: `${profile.name} Portfolio`,
+	url: absoluteUrl('/', site),
+	description: sceneSeoItems[0].description,
+	inLanguage: 'en'
+};
+---
+
+<meta charset="utf-8" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" href="/favicon.ico" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content={Astro.generator} />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="author" content={profile.name} />
+<meta name="keywords" content={keywords} />
+<meta name="description" content={scene.description} />
+<link rel="canonical" href={canonicalUrl} />
+<title>{scene.title}</title>
+
+<meta property="og:type" content="profile" />
+<meta property="og:site_name" content={`${profile.name} Portfolio`} />
+<meta property="og:title" content={scene.title} />
+<meta property="og:description" content={scene.description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:image:secure_url" content={ogImageUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={`${scene.label} portfolio preview for ${profile.name}`} />
+<meta property="profile:first_name" content="Nguyen Phu" />
+<meta property="profile:last_name" content="Quang" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={scene.title} />
+<meta name="twitter:description" content={scene.description} />
+<meta name="twitter:image" content={ogImageUrl} />
+<meta name="twitter:image:alt" content={`${scene.label} portfolio preview for ${profile.name}`} />
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(personJson)} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(websiteJson)} />

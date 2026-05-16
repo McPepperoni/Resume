@@ -1,31 +1,80 @@
-## Project Configuration
+# Claude Memory
 
-- **Language**: TypeScript
-- **Package Manager**: bun
-- **Add-ons**: prettier, eslint, tailwindcss, sveltekit-adapter, devtools-json, mcp
+## Goal
+Maintain Nguyen Phu Quang portfolio. Recruiter-first backend/distributed-systems story + premium cyberpunk frontend interaction.
 
----
+## Current State
+- Astro/Bun project replaced deleted SvelteKit app.
+- User wants `main`.
+- Single pinned full-screen story: 12 scenes.
+- Route-backed SEO active, same pinned story UX.
+- Static routes: `/`, `/ai-flow/`, `/experience/`, `/tymex-metrics/`, `/renesas/`, `/renesas-metrics/`, `/success/`, `/rag-llm/`, `/rux/`, `/skills/`, `/skills-delivery/`, `/contact/`.
+- Each route has unique SEO head, canonical, OG/Twitter meta, JSON-LD, generated OG PNG.
+- Direct route load jumps matching scene after GSAP init.
+- Nav/timeline clicks animate in-place + `history.pushState`.
+- Back/forward jumps matching scene.
+- Top nav says `Skills`, not `Skills 01`; right timeline may show detailed labels.
 
-You are able to use the Svelte MCP server, where you have access to comprehensive Svelte 5 and SvelteKit documentation. Here's how to use the available tools effectively:
+## Non-Negotiables
+- Own color scheme, not WorldQuant colors.
+- WorldQuant = interaction pacing/reference only.
+- No gradients.
+- No stock photos.
+- No emoji UI icons. Use Lucide, simple-icons, uploaded logos, code/SVG graphics.
+- Solid colors + hard-edge HUD/cyberpunk graphics.
+- Background/frame stays still; animate child components only.
+- Motion required; respect `prefers-reduced-motion`.
 
-## Available MCP Tools:
+## Key Files
+- `src/data/resume.ts`: content.
+- `src/data/seo.ts`: scene routes/meta/nav/timeline/`SITE_URL`.
+- `src/components/PortfolioStory.astro`: shared story UI.
+- `src/components/SeoHead.astro`: SEO/meta/OG/Twitter/JSON-LD.
+- `src/components/BrandIcon.astro`: icons/logos.
+- `src/pages/index.astro`: `/`.
+- `src/pages/[scene].astro`: scene routes.
+- `src/pages/robots.txt.ts`: robots.
+- `src/pages/sitemap.xml.ts`: sitemap.
+- `src/styles/global.css`: visual system + responsive layouts.
+- `src/scripts/scrollStory.ts`: GSAP + route-aware nav.
+- `scripts/generate-og.mjs`: PNG OG generation.
+- `scripts/verify-scenes.mjs`: scene/SEO guard.
+- `public/llms.txt`, `public/llm.txt`: LLM summary.
 
-### 1. list-sections
+## Commands
+- `bun install`
+- `bun run dev`
+- `bun run verify:scenes`
+- `bun run check`
+- `bun run build`
+- Build runs `node scripts/generate-og.mjs` before `astro build`.
 
-Use this FIRST to discover all available documentation sections. Returns a structured list with titles, use_cases, and paths.
-When asked about Svelte or SvelteKit topics, ALWAYS use this tool at the start of the chat to find relevant sections.
+## Docs
+- Context7 for library/framework/API/CLI/cloud:
+`npx ctx7@latest library <name> "<question>"`
+then:
+`npx ctx7@latest docs <libraryId> "<question>"`
 
-### 2. get-documentation
+## Scene Routes
+- `/` -> `#intro`
+- `/ai-flow/` -> `#ai-flow`
+- `/experience/` -> `#experience`
+- `/tymex-metrics/` -> `#metrics`
+- `/renesas/` -> `#experience-renesas`
+- `/renesas-metrics/` -> `#metrics-renesas`
+- `/success/` -> `#experience-success`
+- `/rag-llm/` -> `#projects`
+- `/rux/` -> `#project-rux`
+- `/skills/` -> `#skills`
+- `/skills-delivery/` -> `#skills-delivery`
+- `/contact/` -> `#contact`
 
-Retrieves full documentation content for specific sections. Accepts single or multiple sections.
-After calling the list-sections tool, you MUST analyze the returned documentation sections (especially the use_cases field) and then use the get-documentation tool to fetch ALL documentation sections that are relevant for the user's task.
+## Verified Baseline
+- `bun run verify:scenes`: pass.
+- `bun run check`: 0 errors/warnings/hints.
+- `bun run build`: pass; 12 pages; 12 PNG OG images.
+- Browser QA: `/`, `/renesas/`, `/renesas-metrics/`, `/skills/`, `/contact/`, in-app `/renesas/` -> `/contact/`; correct active scene, no console errors, no horizontal overflow.
 
-### 3. svelte-autofixer
-
-Analyzes Svelte code and returns issues and suggestions.
-You MUST use this tool whenever writing Svelte code before sending it to the user. Keep calling it until no issues or suggestions are returned.
-
-### 4. playground-link
-
-Generates a Svelte Playground link with the provided code.
-After completing the code, ask the user if they want a playground link. Only call this tool after user confirmation and NEVER if code was written to files in their project.
+## Preview Note
+- Codex Windows detached Astro dev may die.
+- Workaround: serve built `dist` via local static server for QA, or run `bun run dev` foreground manually.

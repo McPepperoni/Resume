@@ -1,0 +1,14 @@
+---
+import PortfolioStory from '../components/PortfolioStory.astro';
+import SeoHead from '../components/SeoHead.astro';
+import { introSceneSeo } from '../data/seo';
+---
+
+<html lang="en">
+	<head>
+		<SeoHead scene={introSceneSeo} />
+	</head>
+	<body>
+		<PortfolioStory initialSceneId={introSceneSeo.sceneId} />
+	</body>
+</html>

@@ -1,0 +1,611 @@
+---
+import {
+	Activity,
+	ArrowUpRight,
+	Bot,
+	Cloud,
+	Code2,
+	Cpu,
+	Database,
+	GitBranch,
+	Github,
+	Linkedin,
+	Mail,
+	Server,
+	Share2,
+	Terminal
+} from 'lucide-astro';
+import BrandIcon from './BrandIcon.astro';
+import {
+	contacts,
+	experiences,
+	metrics,
+	profile,
+	projects,
+	signalNarrative,
+	skillGroups,
+	techIconMap,
+	type BrandMark,
+	type MetricTone
+} from '../data/resume';
+import { navItems, sceneSeoById, timelineItems } from '../data/seo';
+import '../styles/global.css';
+
+const [tymeX, renesas, success] = experiences;
+const [
+	ingestionMetric,
+	migrationMetric,
+	integrityMetric,
+	workloadMetric,
+	uptimeMetric,
+	accuracyMetric,
+	integrationMetric
+] = metrics;
+const [ragProject, ruxProject] = projects;
+const systemsSkillGroups = skillGroups.slice(0, 3);
+const deliverySkillGroups = skillGroups.slice(3);
+const tymeXMetrics = [ingestionMetric, migrationMetric, integrityMetric, integrationMetric];
+const renesasMetrics = [workloadMetric, uptimeMetric, accuracyMetric];
+const aiProviders = [
+	{ name: 'Claude', src: '/Claude_AI_logo.svg.png', role: 'architecture review and design pressure' },
+	{ name: 'Codex', src: '/codex-app.png', role: 'repo-aware implementation and verification' },
+	{ name: 'Cursor', src: '/cursor.webp', role: 'local edit loop and contextual pairing' }
+];
+const aiFlowSteps = [
+	'Prompt grounded in tickets, code paths, docs, and operational risk.',
+	'Generated changes stay behind typed boundaries, tests, and reviewer-readable diffs.',
+	'Human review closes the loop with production constraints, observability, and rollback notes.'
+];
+
+const fallbackIcon = (label: string, tone: MetricTone = 'mint'): BrandMark => ({
+	monogram: label
+		.split(/[\s./-]+/)
+		.map((part) => part[0])
+		.join('')
+		.slice(0, 3)
+		.toUpperCase(),
+	tone
+});
+
+const techIcon = (label: string, tone: MetricTone = 'mint') => techIconMap[label] ?? fallbackIcon(label, tone);
+
+type Props = {
+	initialSceneId?: string;
+};
+
+const { initialSceneId = 'intro' } = Astro.props;
+const sceneRoute = (sceneId: string) => sceneSeoById[sceneId]?.route ?? '/';
+---
+
+<div class="scroll-meter" aria-hidden="true"><span data-scroll-progress></span></div>
+		<div class="site-shell">
+			<header class="nav-frame" aria-label="Primary navigation">
+				<a class="nav-brand" href={sceneRoute('intro')} data-route-link data-scene-target="intro" aria-label="Back to top">
+					<span>NGUYEN PHU QUANG</span>
+				</a>
+				<nav class="nav-links">
+					{
+						navItems.map((item) => (
+							<a href={item.route} data-route-link data-scene-target={item.sceneId} data-nav-link data-nav-chapter={item.chapter}>
+								{item.label}
+							</a>
+						))
+					}
+				</nav>
+			</header>
+
+			<main id="top" class="story" data-story-root data-initial-scene={initialSceneId}>
+				<div class="story-pin" data-story-pin>
+					<div class="story-stage" data-story-stage>
+						<section
+							id="intro"
+							class="scene story-scene scene-intro"
+							data-scene
+							data-story-scene
+							data-chapter="intro"
+							data-scene-index="0"
+							data-scene-route={sceneRoute('intro')}
+						>
+							<div class="scene-frame scene-stage hero-frame">
+								<div class="scene-copy command-panel" data-scene-part data-reveal="card-lift">
+									<span class="eyebrow" data-reveal="char-scan"><Terminal size={16} /> Portfolio command deck</span>
+									<div class="hero-title-row">
+										<h1 data-reveal="line-mask">{profile.name}</h1>
+									</div>
+									<p class="hero-summary" data-reveal="copy-fade">{profile.role}. {profile.summary}</p>
+									<div class="hero-actions" data-reveal="button-stagger">
+										<a class="button-link primary" href={`mailto:${profile.email}`}>
+											<Mail size={18} /> Contact
+										</a>
+										<a class="button-link" href={profile.github} target="_blank" rel="noreferrer">
+											<Github size={18} /> GitHub
+										</a>
+										<a class="button-link" href={profile.linkedin} target="_blank" rel="noreferrer">
+											<Linkedin size={18} /> LinkedIn
+										</a>
+									</div>
+								</div>
+								<div class="scene-dashboard panel" data-scene-part data-reveal="border-trace">
+									<h2 data-reveal="line-mask">Systems that keep moving.</h2>
+									<p data-reveal="copy-fade">
+										Lending pipelines, partner integrations, data reconciliation, and observable
+										service behavior in one command surface.
+									</p>
+									<div class="icon-orbit" aria-label="Core stack" data-reveal="icon-rail">
+										{['Spring Boot', 'Apache Kafka', 'PostgreSQL', 'Docker', 'Terraform', 'Python'].map((item) => (
+											<span class="icon-node" data-reveal="icon-pop">
+												<BrandIcon {...techIcon(item)} label={item} />
+												<span>{item}</span>
+											</span>
+										))}
+									</div>
+									<div class="hero-meta" aria-label="Profile facts" data-reveal="card-lift">
+										<div class="meta-cell" data-reveal="card-lift">
+											<span>Base</span>
+											<strong>{profile.location}</strong>
+										</div>
+										<div class="meta-cell" data-reveal="card-lift">
+											<span>Mode</span>
+											<strong>{profile.availability}</strong>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<section
+							id="ai-flow"
+							class="scene story-scene scene-ai-flow"
+							data-scene
+							data-story-scene
+							data-chapter="ai-flow"
+							data-scene-index="1"
+							data-scene-route={sceneRoute('ai-flow')}
+						>
+							<div class="scene-frame scene-stage ai-flow-frame">
+								<div class="scene-kicker ai-flow-copy" data-scene-part data-reveal="card-lift">
+									<span class="eyebrow" data-reveal="char-scan"><Bot size={16} /> AI-centric development flow</span>
+									<h2 data-reveal="line-mask">AI accelerates the loop. Engineering keeps the contract.</h2>
+									<p data-reveal="copy-fade">
+										I use assistants as a disciplined systems workflow: clarify intent, generate bounded options,
+										ship with tests, and keep the final judgment human.
+									</p>
+								</div>
+								<div class="ai-flow-board scene-card" data-scene-part data-reveal="border-trace">
+									<div class="ai-provider-stream" aria-label="AI development providers" data-reveal="logo-flow">
+										{aiProviders.map((provider, index) => (
+											<article class="ai-provider-card" style={`--flow-index: ${index}`}>
+												<span class="ai-provider-logo">
+													<img src={provider.src} alt={`${provider.name} logo`} loading="lazy" decoding="async" />
+												</span>
+												<div>
+													<h3 data-reveal="line-mask">{provider.name}</h3>
+													<p data-reveal="copy-fade">{provider.role}</p>
+												</div>
+											</article>
+										))}
+									</div>
+									<div class="ai-flow-lanes" data-reveal="chip-cascade">
+										{aiFlowSteps.map((step, index) => (
+											<div class="ai-flow-lane" data-reveal="chip-cascade">
+												<span class="ai-step-index">0{index + 1}</span>
+												<p>{step}</p>
+											</div>
+										))}
+									</div>
+									<div class="ai-flow-proof" data-reveal="button-stagger">
+										<span><GitBranch size={15} /> scoped diff</span>
+										<span><Terminal size={15} /> reproducible check</span>
+										<span><Server size={15} /> production guardrail</span>
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<section
+							id="experience"
+							class="scene story-scene scene-experience"
+							data-scene
+							data-story-scene
+							data-chapter="experience"
+							data-scene-index="2"
+							data-scene-route={sceneRoute('experience')}
+						>
+							<div class="scene-frame scene-stage experience-frame">
+								<div class="scene-kicker company-panel" data-scene-part data-reveal="card-lift">
+									<span class="eyebrow" data-reveal="char-scan"><Server size={16} /> Experience 01</span>
+									<div class="company-plate" data-company-plate data-reveal="plate-roll">
+										<BrandIcon {...tymeX.icon} label={tymeX.company} size="lg" />
+										<div>
+											<h2 data-reveal="line-mask">{tymeX.company}</h2>
+											<p data-reveal="char-scan">{tymeX.role} / {tymeX.period}</p>
+										</div>
+									</div>
+									<p class="scene-signal-copy" data-reveal="word-rise">{signalNarrative[0]}</p>
+								</div>
+								<div class="experience-card scene-card" data-scene-part data-reveal="border-trace">
+									<p data-reveal="word-rise">{tymeX.summary}</p>
+									<div class="impact-row" data-reveal="chip-cascade">
+										{tymeX.metrics.map((metric) => <span class="impact-pill" data-reveal="chip-cascade">{metric}</span>)}
+									</div>
+									<ul class="achievement-list" data-line-list>
+										{tymeX.achievements.map((achievement) => <li data-reveal="terminal-line">{achievement}</li>)}
+									</ul>
+									<div class="chip-row icon-chip-row" data-reveal="chip-cascade">
+										{tymeX.stack.map((item) => (
+											<span class="chip icon-chip" data-reveal="chip-cascade">
+												<BrandIcon {...techIcon(item)} label={item} size="sm" />
+												{item}
+											</span>
+										))}
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<section
+							id="metrics"
+							class="scene story-scene scene-metrics"
+							data-scene
+							data-story-scene
+							data-chapter="experience"
+							data-scene-index="3"
+							data-scene-route={sceneRoute('metrics')}
+						>
+							<div class="scene-frame scene-stage dashboard-frame">
+								<div class="scene-kicker" data-scene-part data-reveal="card-lift">
+									<span class="eyebrow" data-reveal="char-scan"><Cpu size={16} /> TymeX metrics</span>
+									<h2 data-reveal="line-mask">Scale without losing correctness.</h2>
+									<p data-reveal="copy-fade">{signalNarrative[1]}</p>
+								</div>
+								<div class="metric-grid metric-grid-four compact-grid" data-scene-part data-reveal="metric-sweep">
+									{tymeXMetrics.map((metric) => (
+										<article class="metric-card tilt-card" data-tone={metric.tone} data-tilt data-reveal="border-trace">
+											<BrandIcon iconKey={metric.iconKey} monogram={metric.monogram ?? metric.label.slice(0, 2)} tone={metric.tone} label={metric.label} />
+											<div class="metric-value" data-count={metric.count} data-suffix={metric.suffix ?? ''} data-reveal="counter-sweep">
+												{metric.value}
+											</div>
+											<div class="metric-label" data-reveal="char-scan">{metric.label}</div>
+											<p class="metric-detail" data-reveal="copy-fade">{metric.detail}</p>
+										</article>
+									))}
+								</div>
+							</div>
+						</section>
+
+						<section
+							id="experience-renesas"
+							class="scene story-scene scene-experience"
+							data-scene
+							data-story-scene
+							data-chapter="experience"
+							data-scene-index="4"
+							data-scene-route={sceneRoute('experience-renesas')}
+						>
+							<div class="scene-frame scene-stage experience-frame">
+								<div class="scene-kicker company-panel" data-scene-part data-reveal="card-lift">
+									<span class="eyebrow" data-reveal="char-scan"><Server size={16} /> Experience 02</span>
+									<div class="company-plate" data-company-plate data-reveal="plate-roll">
+										<BrandIcon {...renesas.icon} label={renesas.company} size="lg" />
+										<div>
+											<h2 data-reveal="line-mask">{renesas.company}</h2>
+											<p data-reveal="char-scan">{renesas.role} / {renesas.period}</p>
+										</div>
+									</div>
+									<p class="scene-signal-copy" data-reveal="word-rise">{signalNarrative[2]}</p>
+								</div>
+								<div class="experience-card scene-card" data-scene-part data-reveal="border-trace">
+									<p data-reveal="word-rise">{renesas.summary}</p>
+									<div class="impact-row" data-reveal="chip-cascade">
+										{renesas.metrics.map((metric) => <span class="impact-pill" data-reveal="chip-cascade">{metric}</span>)}
+									</div>
+									<ul class="achievement-list" data-line-list>
+										{renesas.achievements.map((achievement) => <li data-reveal="terminal-line">{achievement}</li>)}
+									</ul>
+									<div class="chip-row icon-chip-row" data-reveal="chip-cascade">
+										{renesas.stack.map((item) => (
+											<span class="chip icon-chip" data-reveal="chip-cascade">
+												<BrandIcon {...techIcon(item)} label={item} size="sm" />
+												{item}
+											</span>
+										))}
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<section
+							id="metrics-renesas"
+							class="scene story-scene scene-metrics"
+							data-scene
+							data-story-scene
+							data-chapter="experience"
+							data-scene-index="5"
+							data-scene-route={sceneRoute('metrics-renesas')}
+						>
+							<div class="scene-frame scene-stage dashboard-frame">
+								<div class="scene-kicker" data-scene-part data-reveal="card-lift">
+									<span class="eyebrow" data-reveal="char-scan"><Activity size={16} /> Renesas metrics</span>
+									<h2 data-reveal="line-mask">Reliability where operations feel it.</h2>
+									<p data-reveal="copy-fade">{signalNarrative[2]}</p>
+								</div>
+								<div class="metric-grid compact-grid" data-scene-part data-reveal="metric-sweep">
+									{renesasMetrics.map((metric) => (
+										<article class="metric-card tilt-card" data-tone={metric.tone} data-tilt data-reveal="border-trace">
+											<BrandIcon iconKey={metric.iconKey} monogram={metric.monogram ?? metric.label.slice(0, 2)} tone={metric.tone} label={metric.label} />
+											<div class="metric-value" data-count={metric.count} data-suffix={metric.suffix ?? ''} data-reveal="counter-sweep">
+												{metric.value}
+											</div>
+											<div class="metric-label" data-reveal="char-scan">{metric.label}</div>
+											<p class="metric-detail" data-reveal="copy-fade">{metric.detail}</p>
+										</article>
+									))}
+								</div>
+							</div>
+						</section>
+
+						<section
+							id="experience-success"
+							class="scene story-scene scene-experience"
+							data-scene
+							data-story-scene
+							data-chapter="experience"
+							data-scene-index="6"
+							data-scene-route={sceneRoute('experience-success')}
+						>
+							<div class="scene-frame scene-stage experience-frame">
+								<div class="scene-kicker company-panel" data-scene-part data-reveal="card-lift">
+									<span class="eyebrow" data-reveal="char-scan"><Server size={16} /> Experience 03</span>
+									<div class="company-plate" data-company-plate data-reveal="plate-roll">
+										<BrandIcon {...success.icon} label={success.company} size="lg" />
+										<div>
+											<h2 data-reveal="line-mask">{success.company}</h2>
+											<p data-reveal="char-scan">{success.role} / {success.period}</p>
+										</div>
+									</div>
+									<p class="scene-signal-copy" data-reveal="word-rise">{signalNarrative[3]}</p>
+								</div>
+								<div class="experience-card scene-card" data-scene-part data-reveal="border-trace">
+									<p data-reveal="word-rise">{success.summary}</p>
+									<div class="impact-row" data-reveal="chip-cascade">
+										{success.metrics.map((metric) => <span class="impact-pill" data-reveal="chip-cascade">{metric}</span>)}
+									</div>
+									<ul class="achievement-list" data-line-list>
+										{success.achievements.map((achievement) => <li data-reveal="terminal-line">{achievement}</li>)}
+									</ul>
+									<div class="chip-row icon-chip-row" data-reveal="chip-cascade">
+										{success.stack.map((item) => (
+											<span class="chip icon-chip" data-reveal="chip-cascade">
+												<BrandIcon {...techIcon(item)} label={item} size="sm" />
+												{item}
+											</span>
+										))}
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<section
+							id="projects"
+							class="scene story-scene scene-project"
+							data-scene
+							data-story-scene
+							data-chapter="projects"
+							data-scene-index="7"
+							data-scene-route={sceneRoute('projects')}
+						>
+							<div class="scene-frame scene-stage project-frame">
+								<div class="scene-kicker" data-scene-part data-reveal="card-lift">
+									<span class="eyebrow" data-reveal="char-scan"><Code2 size={16} /> Project 01</span>
+									<div class="company-plate project-plate" data-reveal="plate-roll">
+										<BrandIcon {...ragProject.icon} label={ragProject.name} size="lg" />
+										<div>
+											<h2 data-reveal="line-mask">{ragProject.name}</h2>
+											<p data-reveal="word-rise">{ragProject.summary}</p>
+										</div>
+									</div>
+								</div>
+								<article class="project-card scene-card" data-scene-part data-reveal="border-trace">
+									<span class="project-type" data-reveal="char-scan">{ragProject.type}</span>
+									<div class="chip-row icon-chip-row" data-reveal="chip-cascade">
+										{ragProject.stack.map((item) => (
+											<span class="chip icon-chip" data-reveal="chip-cascade">
+												<BrandIcon {...techIcon(item)} label={item} size="sm" />
+												{item}
+											</span>
+										))}
+									</div>
+									<ul data-line-list data-reveal="project-terminal">
+										{ragProject.points.map((point) => <li data-reveal="terminal-line">{point}</li>)}
+									</ul>
+								</article>
+							</div>
+						</section>
+
+						<section
+							id="project-rux"
+							class="scene story-scene scene-project"
+							data-scene
+							data-story-scene
+							data-chapter="projects"
+							data-scene-index="8"
+							data-scene-route={sceneRoute('project-rux')}
+						>
+							<div class="scene-frame scene-stage project-frame">
+								<div class="scene-kicker" data-scene-part data-reveal="card-lift">
+									<span class="eyebrow" data-reveal="char-scan"><Code2 size={16} /> Project 02</span>
+									<div class="company-plate project-plate" data-reveal="plate-roll">
+										<BrandIcon {...ruxProject.icon} label={ruxProject.name} size="lg" />
+										<div>
+											<h2 data-reveal="line-mask">
+												<a href={ruxProject.href} target="_blank" rel="noreferrer">
+													{ruxProject.name} <ArrowUpRight size={26} />
+												</a>
+											</h2>
+											<p data-reveal="word-rise">{ruxProject.summary}</p>
+										</div>
+									</div>
+								</div>
+								<article class="project-card scene-card" data-scene-part data-reveal="border-trace">
+									<span class="project-type" data-reveal="char-scan">{ruxProject.type}</span>
+									<div class="chip-row icon-chip-row" data-reveal="chip-cascade">
+										{ruxProject.stack.map((item) => (
+											<span class="chip icon-chip" data-reveal="chip-cascade">
+												<BrandIcon {...techIcon(item)} label={item} size="sm" />
+												{item}
+											</span>
+										))}
+									</div>
+									<ul data-line-list data-reveal="project-terminal">
+										{ruxProject.points.map((point) => <li data-reveal="terminal-line">{point}</li>)}
+									</ul>
+								</article>
+							</div>
+						</section>
+
+						<section
+							id="skills"
+							class="scene story-scene scene-skills"
+							data-scene
+							data-story-scene
+							data-chapter="skills"
+							data-scene-index="9"
+							data-scene-route={sceneRoute('skills')}
+						>
+							<div class="scene-frame scene-stage dashboard-frame">
+								<div class="scene-kicker" data-scene-part data-reveal="card-lift">
+									<span class="eyebrow" data-reveal="char-scan"><Database size={16} /> Skill matrix 01</span>
+									<h2 data-reveal="line-mask">Systems foundation.</h2>
+									<p data-reveal="copy-fade">Backend, cloud, and data-store signals grouped for quick scanning.</p>
+								</div>
+								<div class="skill-grid compact-skill-grid" data-scene-part data-reveal="skill-wave-left">
+									{systemsSkillGroups.map((group) => (
+										<article class={`skill-card tilt-card tone-${group.tone}`} data-tilt data-reveal="border-trace">
+											<BrandIcon {...group.icon} label={group.title} />
+											<span class="skill-count" data-reveal="char-scan">{group.skills.length} signals</span>
+											<h3 data-reveal="line-mask">{group.title}</h3>
+											<div class="chip-row icon-chip-row" data-reveal="chip-cascade">
+												{group.skills.map((skill) => (
+													<span class="chip icon-chip" data-reveal="chip-cascade">
+														<BrandIcon {...techIcon(skill, group.tone)} label={skill} size="sm" />
+														{skill}
+													</span>
+												))}
+											</div>
+										</article>
+									))}
+								</div>
+							</div>
+						</section>
+
+						<section
+							id="skills-delivery"
+							class="scene story-scene scene-skills"
+							data-scene
+							data-story-scene
+							data-chapter="skills"
+							data-scene-index="10"
+							data-scene-route={sceneRoute('skills-delivery')}
+						>
+							<div class="scene-frame scene-stage dashboard-frame">
+								<div class="scene-kicker" data-scene-part data-reveal="card-lift">
+									<span class="eyebrow" data-reveal="char-scan"><Database size={16} /> Skill matrix 02</span>
+									<h2 data-reveal="line-mask">Delivery, orchestration, and applied AI.</h2>
+									<p data-reveal="copy-fade">Messaging, operations, and ML-adjacent tooling kept in a second readable frame.</p>
+								</div>
+								<div class="skill-grid compact-skill-grid" data-scene-part data-reveal="skill-wave-right">
+									{deliverySkillGroups.map((group) => (
+										<article class={`skill-card tilt-card tone-${group.tone}`} data-tilt data-reveal="border-trace">
+											<BrandIcon {...group.icon} label={group.title} />
+											<span class="skill-count" data-reveal="char-scan">{group.skills.length} signals</span>
+											<h3 data-reveal="line-mask">{group.title}</h3>
+											<div class="chip-row icon-chip-row" data-reveal="chip-cascade">
+												{group.skills.map((skill) => (
+													<span class="chip icon-chip" data-reveal="chip-cascade">
+														<BrandIcon {...techIcon(skill, group.tone)} label={skill} size="sm" />
+														{skill}
+													</span>
+												))}
+											</div>
+										</article>
+									))}
+								</div>
+							</div>
+						</section>
+
+						<section
+							id="contact"
+							class="scene story-scene scene-contact"
+							data-scene
+							data-story-scene
+							data-chapter="contact"
+							data-scene-index="11"
+							data-scene-route={sceneRoute('contact')}
+						>
+							<div class="scene-frame scene-stage contact-frame">
+								<div class="scene-kicker" data-scene-part data-reveal="card-lift">
+									<span class="eyebrow" data-reveal="char-scan"><Cloud size={16} /> Contact dock</span>
+									<h2 data-reveal="line-mask">Ready for backend, platform, and data-heavy work.</h2>
+									<p class="contact-copy" data-reveal="copy-fade">
+										Reach out for remote roles, backend systems, partner integrations, cloud
+										pipelines, and product teams that care about operational clarity.
+									</p>
+								</div>
+								<div class="contact-grid" data-scene-part data-reveal="contact-rise">
+									{contacts.map((contact) => (
+										<a class="contact-card tilt-card" href={contact.href} data-tilt data-reveal="border-trace">
+											<BrandIcon {...contact.icon} label={contact.label} />
+											<span class="contact-label" data-reveal="char-scan">{contact.label}</span>
+											<h3 data-reveal="line-mask">{contact.label}</h3>
+											<span class="contact-display" data-reveal="link-pulse">
+												{contact.display}
+												<ArrowUpRight size={18} />
+											</span>
+										</a>
+									))}
+								</div>
+							</div>
+						</section>
+					</div>
+					<aside class="story-timeline" data-story-timeline aria-label="Screen timeline">
+						<div class="story-timeline-rail" aria-hidden="true">
+							<span data-timeline-progress></span>
+						</div>
+						<nav class="story-timeline-list" aria-label="Detailed screen anchors">
+							{
+								timelineItems.map((item, index) => (
+									<a
+										class="timeline-anchor"
+										href={item.route}
+										data-route-link
+										data-scene-target={item.sceneId}
+										data-timeline-link
+										data-timeline-index={index}
+										data-timeline-chapter={item.chapter}
+										aria-label={`${String(index + 1).padStart(2, '0')} ${item.label}: ${item.detail}`}
+										title={`${String(index + 1).padStart(2, '0')} ${item.label}: ${item.detail}`}
+									>
+										<span class="timeline-label" aria-hidden="true">{item.label}</span>
+										<span class="timeline-dot" aria-hidden="true"></span>
+									</a>
+								))
+							}
+						</nav>
+					</aside>
+				</div>
+			</main>
+			<div class="share-dock" aria-live="polite">
+				<button class="share-control" type="button" data-share-button aria-label="Copy current screen link">
+					<Share2 size={18} aria-hidden="true" />
+					<span class="share-label">Share</span>
+				</button>
+				<div class="share-toast" data-share-toast role="status" aria-live="polite" aria-atomic="true">
+					Copied screen link
+				</div>
+			</div>
+
+		</div>
+
+		<script>
+			import '../scripts/scrollStory';
+		</script>

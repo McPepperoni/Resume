@@ -1,0 +1,26 @@
+# Nguyen Phu Quang
+
+> Backend and distributed-systems software engineer based in Ho Chi Minh, Vietnam, open to remote work.
+
+This site is a portfolio for Nguyen Phu Quang. It emphasizes backend systems, event-driven lending workflows, production REST services, data pipelines, cloud delivery, and AI-assisted development practices.
+
+## Key Pages
+
+- [Intro](/): Command-deck overview for backend, distributed systems, integrations, and data-heavy product work.
+- [AI Flow](/ai-flow/): AI-centric development loop using assistant tools while keeping engineering judgment, tests, and review boundaries.
+- [TymeX Experience](/experience/): Event-driven lending platform, partner integrations, reconciliation, and migration-heavy servicing work.
+- [TymeX Metrics](/tymex-metrics/): 1M+ records per month, 300k accounts migrated, 99.9% integrity, and 3 partner integrations.
+- [Renesas Experience](/renesas/): REST services, audit visibility, Kafka orchestration, Camunda BPMN, and Docker-based workloads.
+- [Renesas Metrics](/renesas-metrics/): 2TB workloads, 99% uptime, and 20% data accuracy lift.
+- [Success Software Services](/success/): Enterprise feature delivery across UI, APIs, schemas, and release-ready workflows.
+- [RAG and LLM Project](/rag-llm/): Retrieval, preprocessing, synthetic data, embeddings, and inference tuning experiments.
+- [Rux](/rux/): Declarative type-safe HTTP client for TypeScript with zero runtime dependencies.
+- [Skills 01](/skills/): Backend systems, cloud and AWS, and data stores.
+- [Skills 02](/skills-delivery/): Messaging, orchestration, DevOps, delivery, and applied ML.
+- [Contact](/contact/): Email, GitHub, and LinkedIn contact links.
+
+## Contact
+
+- Email: quangnguyen16200@gmail.com
+- GitHub: https://github.com/McPepperoni
+- LinkedIn: https://www.linkedin.com/in/quang-phu-nguyen

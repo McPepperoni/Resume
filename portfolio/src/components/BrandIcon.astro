@@ -1,0 +1,38 @@
+---
+import * as simpleIcons from 'simple-icons';
+import type { BrandMark } from '../data/resume';
+
+type SimpleIcon = {
+	title: string;
+	path: string;
+};
+
+type Props = BrandMark & {
+	label?: string;
+	size?: 'sm' | 'md' | 'lg';
+	reveal?: string;
+};
+
+const { imageSrc, iconKey, monogram, tone = 'mint', label, size = 'md', reveal = 'icon-pop' } = Astro.props;
+const icon = iconKey ? (simpleIcons[iconKey as keyof typeof simpleIcons] as SimpleIcon | undefined) : undefined;
+const accessibleLabel = label ?? icon?.title ?? monogram;
+---
+
+<span
+	class={`brand-icon brand-icon-${size} tone-${tone}${imageSrc ? ' brand-icon-image-backed' : ''}`}
+	aria-label={accessibleLabel}
+	title={accessibleLabel}
+	data-reveal={reveal}
+>
+	{
+		imageSrc ? (
+			<img class="brand-icon-image" src={imageSrc} alt="" loading="lazy" decoding="async" aria-hidden="true" />
+		) : icon ? (
+			<svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false">
+				<path d={icon.path} />
+			</svg>
+		) : (
+			<span class="brand-icon-monogram" aria-hidden="true">{monogram}</span>
+		)
+	}
+</span>
