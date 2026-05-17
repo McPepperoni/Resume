@@ -95,6 +95,11 @@ requireMatch('AI flow scene missing', storySource, /id="ai-flow"[\s\S]*data-chap
 if (/label:\s*'Metrics'/.test(routeSource)) {
 	failures.push('Metrics nav item should be removed');
 }
+requireMatch('education data missing', files.data, /University of Information and Technology, HCMVNU/);
+requireMatch('certificate data missing', files.data, /TOEIC 930\/990/);
+requireMatch('intro education credential missing', storySource, /Education[\s\S]*education\.institution/);
+requireMatch('intro certificate credential missing', storySource, /Certificate[\s\S]*education\.certificates/);
+requireMatch('intro credential CSS missing', files.css, /\.hero-credentials[\s\S]*grid-template-columns/);
 requireMatch('master story pin missing', storySource, /data-story-pin/);
 requireMatch('master story stage missing', storySource, /data-story-stage/);
 requireMatch('right-side story timeline missing', storySource, /data-story-timeline/);

@@ -295,7 +295,7 @@ a {
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: 12px;
-	margin-top: 44px;
+	margin-top: 28px;
 }
 
 .meta-cell {
@@ -316,6 +316,56 @@ a {
 	display: block;
 	margin-top: 8px;
 	font-size: 1rem;
+}
+
+.hero-credentials {
+	display: grid;
+	grid-template-columns: minmax(0, 1.25fr) minmax(180px, 0.75fr);
+	gap: 12px;
+	margin-top: 12px;
+}
+
+.credential-card {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	gap: 12px;
+	align-items: center;
+	min-width: 0;
+	border: 1px solid var(--line);
+	background: var(--void);
+	padding: 12px;
+}
+
+.credential-card svg {
+	color: var(--reactor);
+}
+
+.credential-card span {
+	display: block;
+	color: var(--telemetry);
+	font-family: var(--font-mono);
+	font-size: 0.66rem;
+	text-transform: uppercase;
+}
+
+.credential-card strong,
+.credential-card small {
+	display: block;
+	overflow-wrap: anywhere;
+}
+
+.credential-card strong {
+	margin-top: 5px;
+	color: var(--signal);
+	font-size: 0.95rem;
+	line-height: 1.25;
+}
+
+.credential-card small {
+	margin-top: 5px;
+	color: var(--telemetry);
+	font-size: 0.78rem;
+	line-height: 1.35;
 }
 
 .hero-side {
@@ -852,6 +902,7 @@ a {
 	}
 
 	.hero-meta,
+	.hero-credentials,
 	.metric-grid,
 	.project-grid,
 	.skill-grid,
@@ -2343,6 +2394,10 @@ a {
 
 	.hero-actions .button-link.primary {
 		grid-column: 1 / -1;
+	}
+
+	.credential-card {
+		padding: 10px;
 	}
 }
 

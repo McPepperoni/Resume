@@ -53,6 +53,13 @@ export type ContactLink = {
 	icon: BrandMark;
 };
 
+export type EducationProfile = {
+	institution: string;
+	degree: string;
+	location: string;
+	certificates: string[];
+};
+
 export const profile = {
 	name: 'Nguyen Phu Quang',
 	role: 'Software Engineer - Backend and distributed systems',
@@ -64,6 +71,13 @@ export const profile = {
 	linkedin: 'https://www.linkedin.com/in/quang-phu-nguyen',
 	summary:
 		'Backend engineer designing event-driven microservices, high-throughput data pipelines, and migration-heavy servicing workloads for multi-country lending platforms.'
+};
+
+export const education: EducationProfile = {
+	institution: 'University of Information and Technology, HCMVNU',
+	degree: 'B.S. Computer Science',
+	location: 'Ho Chi Minh',
+	certificates: ['TOEIC 930/990']
 };
 
 export const heroMetrics: Metric[] = [

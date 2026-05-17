@@ -7,8 +7,10 @@ import {
 	Code2,
 	Cpu,
 	Database,
+	BadgeCheck,
 	GitBranch,
 	Github,
+	GraduationCap,
 	Linkedin,
 	Mail,
 	Server,
@@ -18,6 +20,7 @@ import {
 import BrandIcon from './BrandIcon.astro';
 import {
 	contacts,
+	education,
 	experiences,
 	metrics,
 	profile,
@@ -123,6 +126,23 @@ const sceneRoute = (sceneId: string) => sceneSeoById[sceneId]?.route ?? '/';
 										<a class="button-link" href={profile.linkedin} target="_blank" rel="noreferrer">
 											<Linkedin size={18} /> LinkedIn
 										</a>
+									</div>
+									<div class="hero-credentials" aria-label="Education and certificates" data-reveal="card-grid">
+										<div class="credential-card">
+											<GraduationCap size={20} />
+											<div>
+												<span>Education</span>
+												<strong>{education.institution}</strong>
+												<small>{education.degree} / {education.location}</small>
+											</div>
+										</div>
+										<div class="credential-card">
+											<BadgeCheck size={20} />
+											<div>
+												<span>Certificate</span>
+												<strong>{education.certificates.join(' / ')}</strong>
+											</div>
+										</div>
 									</div>
 								</div>
 								<div class="scene-dashboard panel" data-scene-part data-reveal="border-trace">
