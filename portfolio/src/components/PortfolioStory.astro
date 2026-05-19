@@ -530,10 +530,12 @@ const sceneRoute = (sceneId: string) => sceneSeoById[sceneId]?.route ?? '/';
 							<div class="scene-frame scene-stage dashboard-frame">
 								<div class="scene-kicker" data-scene-part data-reveal="card-lift">
 									<span class="eyebrow" data-reveal="char-scan"><Database size={16} /> Skill matrix 02</span>
-									<h2 data-reveal="line-mask">Delivery, orchestration, and applied AI.</h2>
-									<p data-reveal="copy-fade">Messaging, operations, and ML-adjacent tooling kept in a second readable frame.</p>
+									<h2 data-reveal="line-mask">Frontend, delivery, and applied AI.</h2>
+									<p data-reveal="copy-fade">
+										Frontend frameworks, messaging, operations, and ML-adjacent tooling kept in a second readable frame.
+									</p>
 								</div>
-								<div class="skill-grid compact-skill-grid" data-scene-part data-reveal="skill-wave-right">
+								<div class="skill-grid compact-skill-grid skill-grid-delivery" data-scene-part data-reveal="skill-wave-right">
 									{deliverySkillGroups.map((group) => (
 										<article class={`skill-card tilt-card tone-${group.tone}`} data-tilt data-reveal="border-trace">
 											<BrandIcon {...group.icon} label={group.title} />

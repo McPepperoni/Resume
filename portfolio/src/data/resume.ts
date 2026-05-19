@@ -273,6 +273,12 @@ export const skillGroups: SkillGroup[] = [
 		icon: { iconKey: 'siPostgresql', monogram: 'SQL', tone: 'amber' }
 	},
 	{
+		title: 'Frontend technology',
+		tone: 'blue',
+		skills: ['Next.js', 'Astro', 'React', 'TypeScript', 'Tailwind CSS', 'GSAP', 'Responsive UI'],
+		icon: { iconKey: 'siAstro', monogram: 'UI', tone: 'blue' }
+	},
+	{
 		title: 'Messaging and orchestration',
 		tone: 'red',
 		skills: ['Apache Kafka', 'AWS SQS', 'Camunda BPMN', 'Async processing'],
@@ -337,6 +343,11 @@ export const techIconMap: Record<string, BrandMark> = {
 	Docker: { iconKey: 'siDocker', monogram: 'DK', tone: 'blue' },
 	SSR: { monogram: 'SSR', tone: 'amber' },
 	'Next.js': { iconKey: 'siNextdotjs', monogram: 'NX', tone: 'mint' },
+	Astro: { iconKey: 'siAstro', monogram: 'AS', tone: 'blue' },
+	React: { iconKey: 'siReact', monogram: 'RX', tone: 'blue' },
+	'Tailwind CSS': { iconKey: 'siTailwindcss', monogram: 'TW', tone: 'blue' },
+	GSAP: { iconKey: 'siGsap', monogram: 'GS', tone: 'mint' },
+	'Responsive UI': { monogram: 'RWD', tone: 'amber' },
 	'Agile Scrum': { monogram: 'AG', tone: 'blue' },
 	Python: { iconKey: 'siPython', monogram: 'PY', tone: 'mint' },
 	RAG: { monogram: 'RAG', tone: 'mint' },

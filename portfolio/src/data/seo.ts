@@ -160,11 +160,23 @@ export const sceneSeoItems: SceneSeo[] = [
 		route: '/skills-delivery/',
 		chapter: 'skills',
 		label: 'Skills 02',
-		detail: 'Delivery and AI',
-		title: `Messaging, DevOps, and Applied ML Skills | ${profile.name}`,
+		detail: 'Frontend delivery',
+		title: `Frontend, Delivery, and Applied ML Skills | ${profile.name}`,
 		description:
-			'Messaging, orchestration, DevOps, delivery, and applied ML skills across Kafka, Terraform, Docker, Linux, RAG, and embeddings.',
-		keywords: [...baseKeywords, 'Kafka', 'Terraform', 'Docker', 'RAG', 'DevOps'],
+			'Frontend, messaging, DevOps, delivery, and applied ML skills across Next.js, Astro, React, Tailwind CSS, GSAP, Kafka, Terraform, Docker, RAG, and embeddings.',
+		keywords: [
+			...baseKeywords,
+			'Next.js',
+			'Astro',
+			'React',
+			'Tailwind CSS',
+			'GSAP',
+			'Kafka',
+			'Terraform',
+			'Docker',
+			'RAG',
+			'DevOps'
+		],
 		ogImage: '/og/skills-delivery.png'
 	},
 	{

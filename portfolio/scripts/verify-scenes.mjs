@@ -107,6 +107,14 @@ requireMatch('timeline progress rail missing', storySource, /data-timeline-progr
 requireMatch('TymeX metric scene should belong to experience chapter', storySource, /id="metrics"[\s\S]*data-chapter="experience"/);
 requireMatch('Renesas metric scene should belong to experience chapter', storySource, /id="metrics-renesas"[\s\S]*data-chapter="experience"/);
 requireMatch('second skill scene missing', storySource, /id="skills-delivery"[\s\S]*data-chapter="skills"/);
+requireMatch('frontend skill group missing', files.data, /title:\s*'Frontend technology'[\s\S]*Next\.js[\s\S]*Astro[\s\S]*React[\s\S]*TypeScript[\s\S]*Tailwind CSS[\s\S]*GSAP[\s\S]*Responsive UI/);
+requireMatch('frontend skill should be in delivery scene split', files.data, /title:\s*'Data stores'[\s\S]*title:\s*'Frontend technology'[\s\S]*title:\s*'Messaging and orchestration'/);
+requireMatch('frontend skill icon map missing', files.data, /Astro:[\s\S]*siAstro[\s\S]*React:[\s\S]*siReact[\s\S]*Tailwind CSS[\s\S]*siTailwindcss[\s\S]*GSAP[\s\S]*siGsap/);
+requireMatch('frontend delivery skill copy missing', storySource, /Frontend, delivery, and applied AI/);
+requireMatch('four-card delivery skill grid missing', storySource, /skill-grid-delivery/);
+requireMatch('four-card delivery skill CSS missing', files.css, /\.skill-grid-delivery[\s\S]*grid-template-columns:\s*repeat\(4/);
+requireMatch('responsive delivery skill CSS missing', files.css, /@media \(max-width:\s*1180px\)[\s\S]*\.skill-grid-delivery[\s\S]*repeat\(2/);
+requireMatch('frontend skill SEO missing', files.seoData, /Frontend, Delivery, and Applied ML Skills[\s\S]*Next\.js[\s\S]*Astro[\s\S]*React[\s\S]*Tailwind CSS[\s\S]*GSAP/);
 requireMatch('brand icon component usage missing', storySource, /BrandIcon/);
 requireMatch('icon key data missing', files.data, /iconKey/);
 requireMatch('Renesas accuracy metric missing', files.data, /20%\s*data accuracy lift|data accuracy lift/);
