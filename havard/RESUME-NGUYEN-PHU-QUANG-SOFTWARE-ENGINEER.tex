@@ -16,6 +16,7 @@
  \pagestyle{empty}
  \raggedright
  \usepackage[left=0.4in,right=0.4in,bottom=0.3in,top=0.5in]{geometry}
+\usepackage{array}
 \usepackage{etoolbox,refcount}
 \usepackage{multicol}
 
@@ -135,11 +136,11 @@ Backend engineer who designs and runs event-driven microservices and high-throug
 {\textit{Software Engineer}} \
 \vspace{-2mm}
 \begin{itemize}
-      \item Designed \textbf{scalable}, \textbf{event-driven} processing for a \textbf{multi-country} lending platform: \textbf{AWS serverless} (\textbf{Lambda}, \textbf{S3}, \textbf{SQS}, \textbf{Step Functions}), \textbf{Terraform}/\textbf{Bash} \textbf{infrastructure as code}, and \textbf{API-centric microservices} for \textbf{partner onboarding} and expansion; \textbf{high-throughput} servicing flows with \textbf{ELK}-based \textbf{observability}.
+      \item Designed \textbf{scalable}, \textbf{event-driven} architecture for a \textbf{multi-country} lending platform: \textbf{API-centric microservices} for \textbf{partner onboarding} and expansion, and \textbf{Datadog}-based \textbf{observability} for \textbf{high-throughput} servicing flows.
             \vspace{-2.5mm}
       \item Delivered \textbf{partner data pipelines}: \textbf{Spring Boot} services ingesting \textbf{1M+} records/month from reporting feeds into \textbf{PostgreSQL} for \textbf{reconciliation} and \textbf{analytics}; \textbf{3 integrations} spanning \textbf{collections}, \textbf{fee}, and \textbf{mandate management}.
             \vspace{-2.5mm}
-      \item Migrated \textbf{300k accounts} and \textbf{mandates} from a legacy loan book with \textbf{99.9\%} integrity - \textbf{batch-oriented}, auditable transfers enabling unified servicing.
+      \item Built \textbf{mandate migration ETL pipeline} on \textbf{AWS} (\textbf{Glue}, \textbf{Lambda}, \textbf{SQS}, \textbf{Step Functions}, \textbf{S3}): \textbf{batch-oriented}, auditable extraction, transformation, and load migrating \textbf{300k accounts} and \textbf{mandates} from a legacy loan book with \textbf{99.9\%} integrity, enabling unified servicing.
             \vspace{-2.5mm}
       \item Curated team \textbf{AI-assisted development} practices (\textbf{IDE} assistants, review conventions, documentation templates) to align safe, consistent adoption of coding assistants across the engineering workflow.
 \end{itemize}
@@ -153,7 +154,7 @@ Backend engineer who designs and runs event-driven microservices and high-throug
             \vspace{-2.5mm}
       \item Improved \textbf{latency} and \textbf{reliability}: \textbf{SSR} rollout and \textbf{data migration} tooling raised data accuracy by \textbf{20\%}; reduced operational risk on large migrated datasets.
             \vspace{-2.5mm}
-      \item Owned \textbf{production REST services} sustaining \textbf{2TB}-scale workloads at \textbf{99\% uptime}; \textbf{Docker}-based deployment and tuning for predictable \textbf{throughput}.
+      \item Owned \textbf{production REST services} sustaining \textbf{2TB}-scale workloads at \textbf{99\% uptime}; \textbf{Terraform}/\textbf{Bash} \textbf{infrastructure as code} and \textbf{Docker}-based deployment and tuning for predictable \textbf{throughput}.
 \end{itemize}
 \vspace{-1.5mm}
 
@@ -189,7 +190,7 @@ Backend engineer who designs and runs event-driven microservices and high-throug
 %==== Skills (EISHKARAN: tabular { l l }) ====%
 \header{Skills}
 \vspace{0.5mm}
-\begin{tabular}{ l l }
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{\dimexpr\linewidth-5.5cm\relax}@{}}
       Programming languages:           & Java, SQL, Python, TypeScript                                                                       \\
       Distributed systems \& backend:  & Microservices, event-driven architecture, RESTful APIs, Spring Boot                                 \\
       Operating systems \& containers: & Linux (deployment), Docker                                                                          \\
@@ -197,7 +198,7 @@ Backend engineer who designs and runs event-driven microservices and high-throug
       Frontend:                        & Next.js, SSR                                                                                        \\
       Cloud \& AWS:                    & AWS Lambda, S3, SQS, Step Functions, IAM, CloudWatch                                                \\
       Data stores:                     & PostgreSQL, MySQL, Oracle DB                                                                        \\
-      DevOps \& IaC:                   & Terraform, IaC, Bash, NGINX, Kong Gateway, ELK Stack; Vitest, GitHub Actions                        \\
+      DevOps \& IaC:                   & Terraform, IaC, Bash, NGINX, Kong Gateway, Datadog; Vitest, GitHub Actions                        \\
       Applied ML (personal):           & RAG, embeddings, vector retrieval, LLM orchestration, data preprocessing, synthetic data generation \\
 \end{tabular}
 
